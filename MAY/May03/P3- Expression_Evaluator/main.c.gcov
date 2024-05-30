@@ -1,0 +1,158 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <ctype.h>
+        -:    4:#include <string.h>
+        -:    5:#include<time.h>
+        -:    6:#include "tree.h"
+        -:    7:#include "stack.h"
+        -:    8:
+        -:    9:// Function to convert infix expression to postfix expression
+function infixToPostfix called 1 returned 100% blocks executed 85%
+        1:   10:char* infixToPostfix(char* infix) {
+        -:   11:    // Allocate memory for the postfix expression
+        1:   12:    char* postfix = (char*)malloc((strlen(infix) + 1) * sizeof(char));
+        1:   13:    if (postfix == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   14:        printf("Memory allocation failed!\n");
+call    0 never executed
+    #####:   15:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   16:    }
+        -:   17:
+        -:   18:    // Initialize variables
+        1:   19:    int index = 0; // Index for postfix expression
+        1:   20:    int top = -1; // Top index for the stack
+        -:   21:    char stack[100]; // Stack to store operators
+        1:   22:    stack[++top] = '('; // Push '(' onto the stack
+        1:   23:    infix = strcat(infix, ")"); // Append ')' to the infix expression
+        -:   24:
+        -:   25:    // Traverse the infix expression
+       15:   26:    for (int i = 0; infix[i] != '\0'; i++) {
+branch  0 taken 93%
+branch  1 taken 7% (fallthrough)
+        -:   27:        // If current character is operand, add it to postfix
+       14:   28:        if (isdigit(infix[i])) {
+branch  0 taken 43% (fallthrough)
+branch  1 taken 57%
+        6:   29:            postfix[index++] = infix[i];
+        -:   30:        }
+        -:   31:        // If current character is '(', push it onto the stack
+        8:   32:        else if (infix[i] == '(') {
+branch  0 taken 12% (fallthrough)
+branch  1 taken 88%
+        1:   33:            stack[++top] = '(';
+        -:   34:        }
+        -:   35:        // If current character is operator or ')'
+        7:   36:        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == ')') {
+branch  0 taken 86% (fallthrough)
+branch  1 taken 14%
+branch  2 taken 83% (fallthrough)
+branch  3 taken 17%
+branch  4 taken 60% (fallthrough)
+branch  5 taken 40%
+branch  6 taken 67% (fallthrough)
+branch  7 taken 33%
+branch  8 taken 100% (fallthrough)
+branch  9 taken 0%
+        -:   37:            // Pop operators from the stack and add to postfix until '(' is encountered
+       12:   38:            while (stack[top] != '(') {
+branch  0 taken 42%
+branch  1 taken 58% (fallthrough)
+        5:   39:                postfix[index++] = stack[top--];
+        -:   40:            }
+        -:   41:            // If current character is ')', pop '(' from stack
+        7:   42:            if (infix[i] == ')') {
+branch  0 taken 29% (fallthrough)
+branch  1 taken 71%
+        2:   43:                top--;
+        -:   44:            }
+        -:   45:            // Otherwise, push current operator onto the stack
+        -:   46:            else {
+        5:   47:                stack[++top] = infix[i];
+        -:   48:            }
+        -:   49:        }
+        -:   50:    }
+        -:   51:
+        -:   52:    // Null terminate the postfix expression
+        1:   53:    postfix[index] = '\0';
+        -:   54:
+        -:   55:    // Free memory for the postfix expression
+        1:   56:    postfix = realloc(postfix, (strlen(postfix) + 1) * sizeof(char));
+        1:   57:    if (postfix == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   58:        printf("Memory reallocation failed!\n");
+call    0 never executed
+    #####:   59:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   60:    }
+        -:   61:
+        1:   62:    return postfix;
+        -:   63:}
+        -:   64:
+function main called 1 returned 100% blocks executed 90%
+        1:   65:int main() {
+        -:   66:    char expression[100];
+        -:   67:
+        1:   68:    printf("Enter an infix mathematical expression: ");
+call    0 returned 100%
+        1:   69:    if(fgets(expression, sizeof(expression), stdin) == NULL)
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+        -:   70:    {
+    #####:   71:	    printf("Error reading input");
+call    0 never executed
+    #####:   72:	    return 1; //Return an errorr coed
+        -:   73:	}
+        1:   74:    expression[strcspn(expression, "\n")] = '\0'; // Remove newline character from input
+        -:   75:
+        -:   76:    //start measuiring CPU time
+        1:   77:    clock_t start = clock();
+call    0 returned 100%
+        -:   78:
+        -:   79:    // Convert infix expression to postfix expression
+        1:   80:    char* postfix = infixToPostfix(expression);
+call    0 returned 100%
+        1:   81:    printf("Postfix Expression: %s\n", postfix);
+call    0 returned 100%
+        -:   82:
+        -:   83:    // Build the expression tree
+        1:   84:    struct TreeNode* root = buildTree(postfix);
+call    0 returned 100%
+        -:   85:
+        -:   86:    // Perform an iterative inorder traversal of the binary expression tree
+        1:   87:    printf("Inorder Traversal: ");
+call    0 returned 100%
+        1:   88:    inorderTraversal(root);
+call    0 returned 100%
+        1:   89:    printf("\n");
+call    0 returned 100%
+        -:   90:
+        -:   91:    // Evaluate the expression
+        1:   92:    int result = evaluateExpression(root);
+call    0 returned 100%
+        1:   93:    printf("Result: %d\n", result);
+call    0 returned 100%
+        -:   94:
+        -:   95:    //Stop measuring CPU time
+        1:   96:    clock_t end = clock();
+call    0 returned 100%
+        -:   97:
+        -:   98:
+        -:   99:    //Calculate CPU Time used
+        1:  100:    double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        -:  101:
+        -:  102:    //Print the CPu time used
+        1:  103:    printf("CPU Time Used: %f seconds\n", cpu_time_used);
+call    0 returned 100%
+        -:  104:
+        -:  105:    // Deallocate memory for the tree nodes
+        1:  106:    freeTree(root);
+call    0 returned 100%
+        1:  107:    free(postfix);
+        -:  108:
+        1:  109:    return 0;
+        -:  110:}

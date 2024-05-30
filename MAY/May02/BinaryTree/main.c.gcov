@@ -1,0 +1,134 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <ctype.h>
+        -:    4:#include <string.h>
+        -:    5:#include "tree.h"
+        -:    6:#include "stack.h"
+        -:    7:
+        -:    8:// Function to convert infix expression to postfix expression
+function infixToPostfix called 1 returned 100% blocks executed 81%
+        1:    9:char* infixToPostfix(char* infix) {
+        -:   10:    // Allocate memory for the postfix expression
+        1:   11:    char* postfix = (char*)malloc((strlen(infix) + 1) * sizeof(char));
+        1:   12:    if (postfix == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   13:        printf("Memory allocation failed!\n");
+call    0 never executed
+    #####:   14:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   15:    }
+        -:   16:
+        -:   17:    // Initialize variables
+        1:   18:    int index = 0; // Index for postfix expression
+        1:   19:    int top = -1; // Top index for the stack
+        -:   20:    char stack[100]; // Stack to store operators
+        1:   21:    stack[++top] = '('; // Push '(' onto the stack
+        1:   22:    infix = strcat(infix, ")"); // Append ')' to the infix expression
+        -:   23:
+        -:   24:    // Traverse the infix expression
+        9:   25:    for (int i = 0; infix[i] != '\0'; i++) {
+branch  0 taken 89%
+branch  1 taken 11% (fallthrough)
+        -:   26:        // If current character is operand, add it to postfix
+        8:   27:        if (isdigit(infix[i])) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        4:   28:            postfix[index++] = infix[i];
+        -:   29:        }
+        -:   30:        // If current character is '(', push it onto the stack
+        4:   31:        else if (infix[i] == '(') {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   32:            stack[++top] = '(';
+        -:   33:        }
+        -:   34:        // If current character is operator or ')'
+        4:   35:        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == ')') {
+branch  0 taken 75% (fallthrough)
+branch  1 taken 25%
+branch  2 taken 67% (fallthrough)
+branch  3 taken 33%
+branch  4 taken 50% (fallthrough)
+branch  5 taken 50%
+branch  6 taken 100% (fallthrough)
+branch  7 taken 0%
+branch  8 taken 100% (fallthrough)
+branch  9 taken 0%
+        -:   36:            // Pop operators from the stack and add to postfix until '(' is encountered
+        7:   37:            while (stack[top] != '(') {
+branch  0 taken 43%
+branch  1 taken 57% (fallthrough)
+        3:   38:                postfix[index++] = stack[top--];
+        -:   39:            }
+        -:   40:            // If current character is ')', pop '(' from stack
+        4:   41:            if (infix[i] == ')') {
+branch  0 taken 25% (fallthrough)
+branch  1 taken 75%
+        1:   42:                top--;
+        -:   43:            }
+        -:   44:            // Otherwise, push current operator onto the stack
+        -:   45:            else {
+        3:   46:                stack[++top] = infix[i];
+        -:   47:            }
+        -:   48:        }
+        -:   49:    }
+        -:   50:
+        -:   51:    // Null terminate the postfix expression
+        1:   52:    postfix[index] = '\0';
+        -:   53:
+        -:   54:    // Free memory for the postfix expression
+        1:   55:    postfix = realloc(postfix, (strlen(postfix) + 1) * sizeof(char));
+        1:   56:    if (postfix == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   57:        printf("Memory reallocation failed!\n");
+call    0 never executed
+    #####:   58:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   59:    }
+        -:   60:
+        1:   61:    return postfix;
+        -:   62:}
+        -:   63:
+function main called 1 returned 100% blocks executed 100%
+        1:   64:int main() {
+        -:   65:    char expression[100];
+        -:   66:
+        1:   67:    printf("Enter an infix mathematical expression: ");
+call    0 returned 100%
+        1:   68:    fgets(expression, sizeof(expression), stdin);
+call    0 returned 100%
+        1:   69:    expression[strcspn(expression, "\n")] = '\0'; // Remove newline character from input
+        -:   70:
+        -:   71:    // Convert infix expression to postfix expression
+        1:   72:    char* postfix = infixToPostfix(expression);
+call    0 returned 100%
+        1:   73:    printf("Postfix Expression: %s\n", postfix);
+call    0 returned 100%
+        -:   74:
+        -:   75:    // Build the expression tree
+        1:   76:    struct TreeNode* root = buildTree(postfix);
+call    0 returned 100%
+        -:   77:
+        -:   78:    // Perform an iterative inorder traversal of the binary expression tree
+        1:   79:    printf("Inorder Traversal: ");
+call    0 returned 100%
+        1:   80:    inorderTraversal(root);
+call    0 returned 100%
+        1:   81:    printf("\n");
+call    0 returned 100%
+        -:   82:
+        -:   83:    // Evaluate the expression
+        1:   84:    int result = evaluateExpression(root);
+call    0 returned 100%
+        1:   85:    printf("Result: %d\n", result);
+call    0 returned 100%
+        -:   86:
+        -:   87:    // Deallocate memory for the tree nodes
+        1:   88:    freeTree(root);
+call    0 returned 100%
+        1:   89:    free(postfix);
+        -:   90:
+        1:   91:    return 0;
+        -:   92:}

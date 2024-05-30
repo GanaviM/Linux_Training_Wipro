@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May13/Multi_Double_Integer/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/rps/MAY/May13/Multi_Double_Integer/Module.symvers -T /home/rps/MAY/May13/Multi_Double_Integer/modules.order -i Module.symvers -e 

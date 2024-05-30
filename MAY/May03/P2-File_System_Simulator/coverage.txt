@@ -1,0 +1,14 @@
+File 'main.c'
+Lines executed:100.00% of 24
+No branches
+Calls executed:100.00% of 21
+Creating 'main.c.gcov'
+
+File 'file_system.c'
+Lines executed:70.79% of 89
+Branches executed:75.00% of 32
+Taken at least once:56.25% of 32
+Calls executed:57.14% of 7
+Creating 'file_system.c.gcov'
+
+Lines executed:76.99% of 113

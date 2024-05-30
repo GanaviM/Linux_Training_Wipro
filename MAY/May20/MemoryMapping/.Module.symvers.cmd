@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May20/MemoryMapping/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/rps/MAY/May20/MemoryMapping/Module.symvers -T /home/rps/MAY/May20/MemoryMapping/modules.order -i Module.symvers -e 

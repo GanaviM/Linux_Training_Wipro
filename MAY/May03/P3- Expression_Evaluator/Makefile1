@@ -1,0 +1,10 @@
+CC = gcc
+CFLAGS = -I.
+DEPS = stack.h tree.h
+OBJ = stack.o tree.o main.o
+
+%.o:%.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+evaluate: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+

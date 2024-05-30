@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May13/pthreads_double/pthreads_double_integer.mod := printf '%s\n'   pthreads_double_integer.o | awk '!x[$$0]++ { print("/home/rps/MAY/May13/pthreads_double/"$$0) }' > /home/rps/MAY/May13/pthreads_double/pthreads_double_integer.mod

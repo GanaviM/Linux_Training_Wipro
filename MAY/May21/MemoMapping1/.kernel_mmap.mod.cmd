@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May21/MemoMapping1/kernel_mmap.mod := printf '%s\n'   kernel_mmap.o | awk '!x[$$0]++ { print("/home/rps/MAY/May21/MemoMapping1/"$$0) }' > /home/rps/MAY/May21/MemoMapping1/kernel_mmap.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May8/add_driver/add_integer.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/MAY/May8/add_driver/add_integer.ko /home/rps/MAY/May8/add_driver/add_integer.o /home/rps/MAY/May8/add_driver/add_integer.mod.o;  make -f ./arch/x86/Makefile.postlink /home/rps/MAY/May8/add_driver/add_integer.ko

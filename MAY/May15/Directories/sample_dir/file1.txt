@@ -1,0 +1,14 @@
+Shell scripting is a text file with a list of commands that instruct an operating system to perform certain tasks. A shell is an interface that interprets, processes, and executes these commands from the shell script.
+
+Introduction to the Bash Shell
+
+The Linux command line is provided by a program called the shell. Over the years, the shell program has evolved to cater to various options.
+Different users can be configured to use different shells. But most users prefer to stick with the current default shell. The default shell for many Linux distros is the GNU Bourne-Again Shell (bash). Bash is succeeded by Bourne shell (sh).
+When you first launch the shell, it uses a startup script located in the .bashrc or .bash_profile file which allows you to customize the behavior of the shell.
+When a shell is used interactively, it displays a $ when it is waiting for a command from the user. This is called the shell prompt.
+
+What is a Bash Script?
+
+A bash script is a series of commands written in a file. These are read and executed by the bash program. The program executes line by line.
+For example, you can navigate to a certain path, create a folder and spawn a process inside it using the command line.
+You can do the same sequence of steps by saving the commands in a bash script and running it. You can run the script any number of times.

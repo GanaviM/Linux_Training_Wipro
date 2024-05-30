@@ -1,0 +1,4 @@
+This terminal is opened in the RPS consultancy cloud.
+This is the Linux System where the execution of code is done in the terminal.
+This is the sys_call program which first open this file, then reads each of this and displays whatever it has read.
+Here comes the last line of the program.

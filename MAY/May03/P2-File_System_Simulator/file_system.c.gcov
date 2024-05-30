@@ -1,0 +1,191 @@
+        -:    0:Source:file_system.c
+        -:    1:#include "file_system.h" // Include header file for file system definitions
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <string.h>
+        -:    5:
+        -:    6:// Global variables for root directory and current directory
+        -:    7:Directory* rootDirectory = NULL; // Declare a pointer to the root directory, initially set to NULL
+        -:    8:Directory* currentDirectory = NULL; // Declare a pointer to the current directory, initially set to NULL
+        -:    9:
+        -:   10:// Function to initialize the file system
+function initializeFileSystem called 1 returned 100% blocks executed 100%
+        1:   11:void initializeFileSystem() {
+        1:   12:    rootDirectory = (Directory*)malloc(sizeof(Directory)); // Allocate memory for the root directory
+        1:   13:    rootDirectory->name = strdup("root"); // Set the name of the root directory
+        1:   14:    rootDirectory->parent = NULL; // Set the parent directory of the root directory to NULL
+        1:   15:    rootDirectory->subdirectories = NULL; // Set the subdirectories of the root directory to NULL
+        1:   16:    rootDirectory->files = NULL; // Set the files in the root directory to NULL
+        1:   17:    rootDirectory->next = NULL; // Set the next pointer of the root directory to NULL
+        -:   18:
+        1:   19:    currentDirectory = rootDirectory; // Set the current directory to the root directory
+        1:   20:}
+        -:   21:
+        -:   22:// Function to create a new directory
+function createDirectory called 2 returned 100% blocks executed 86%
+        2:   23:void createDirectory(const char* name) {
+        2:   24:    Directory* newDirectory = (Directory*)malloc(sizeof(Directory)); // Allocate memory for the new directory
+        2:   25:    newDirectory->name = strdup(name); // Set the name of the new directory
+        2:   26:    newDirectory->parent = currentDirectory; // Set the parent directory of the new directory to the current directory
+        2:   27:    newDirectory->subdirectories = NULL; // Set the subdirectories of the new directory to NULL
+        2:   28:    newDirectory->files = NULL; // Set the files in the new directory to NULL
+        2:   29:    newDirectory->next = NULL; // Set the next pointer of the new directory to NULL
+        -:   30:
+        -:   31:    // Add the new directory to the list of subdirectories in the current directory
+        2:   32:    if (currentDirectory->subdirectories == NULL) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        1:   33:        currentDirectory->subdirectories = newDirectory;
+        -:   34:    } else {
+        1:   35:        Directory* temp = currentDirectory->subdirectories;
+        1:   36:        while (temp->next != NULL) {
+branch  0 taken 0%
+branch  1 taken 100% (fallthrough)
+    #####:   37:            temp = temp->next;
+        -:   38:        }
+        1:   39:        temp->next = newDirectory;
+        -:   40:    }
+        2:   41:}
+        -:   42:
+        -:   43:// Function to create a new file
+function createFile called 3 returned 100% blocks executed 86%
+        3:   44:void createFile(const char* name, int size) {
+        3:   45:    File* newFile = (File*)malloc(sizeof(File)); // Allocate memory for the new file
+        3:   46:    newFile->name = strdup(name); // Set the name of the new file
+        3:   47:    newFile->size = size; // Set the size of the new file
+        3:   48:    newFile->next = NULL; // Set the next pointer of the new file to NULL
+        -:   49:
+        -:   50:    // Add the new file to the list of files in the current directory
+        3:   51:    if (currentDirectory->files == NULL) {
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+        2:   52:        currentDirectory->files = newFile;
+        -:   53:    } else {
+        1:   54:        File* temp = currentDirectory->files;
+        1:   55:        while (temp->next != NULL) {
+branch  0 taken 0%
+branch  1 taken 100% (fallthrough)
+    #####:   56:            temp = temp->next;
+        -:   57:        }
+        1:   58:        temp->next = newFile;
+        -:   59:    }
+        3:   60:}
+        -:   61:
+        -:   62:// Function to view the contents of a directory
+function viewDirectoryContents called 3 returned 100% blocks executed 100%
+        3:   63:void viewDirectoryContents(const char* directoryName) {
+        3:   64:    Directory* temp = currentDirectory->subdirectories; // Initialize a temporary pointer to traverse subdirectories
+        5:   65:    while (temp != NULL) {
+branch  0 taken 40%
+branch  1 taken 60% (fallthrough)
+        2:   66:        printf("Directory: %s\n", temp->name); // Print the name of each subdirectory
+call    0 returned 100%
+        2:   67:        temp = temp->next; // Move to the next subdirectory
+        -:   68:    }
+        -:   69:
+        3:   70:    File* fileTemp = currentDirectory->files; // Initialize a temporary pointer to traverse files
+        7:   71:    while (fileTemp != NULL) {
+branch  0 taken 57%
+branch  1 taken 43% (fallthrough)
+        4:   72:        printf("File: %s, Size: %d\n", fileTemp->name, fileTemp->size); // Print the name and size of each file
+call    0 returned 100%
+        4:   73:        fileTemp = fileTemp->next; // Move to the next file
+        -:   74:    }
+        3:   75:}
+        -:   76:
+        -:   77:// Function to navigate into a directory
+function navigateIntoDirectory called 1 returned 100% blocks executed 71%
+        1:   78:void navigateIntoDirectory(const char* directoryName) {
+        1:   79:    Directory* temp = currentDirectory->subdirectories; // Initialize a temporary pointer to traverse subdirectories
+        1:   80:    while (temp != NULL) {
+branch  0 taken 100%
+branch  1 taken 0% (fallthrough)
+        1:   81:        if (strcmp(temp->name, directoryName) == 0) { // Check if the name of the subdirectory matches the given name
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:   82:            currentDirectory = temp; // Set the current directory to the matched subdirectory
+        1:   83:            return; // Exit the function
+        -:   84:        }
+    #####:   85:        temp = temp->next; // Move to the next subdirectory
+        -:   86:    }
+    #####:   87:    printf("Directory not found.\n"); // Print a message if the directory is not found
+call    0 never executed
+        -:   88:}
+        -:   89:
+        -:   90:// Function to delete a file
+function deleteFile called 1 returned 100% blocks executed 60%
+        1:   91:void deleteFile(const char* fileName) {
+        1:   92:    File* temp = currentDirectory->files; // Initialize a temporary pointer to traverse files
+        1:   93:    File* prev = NULL; // Initialize a pointer to keep track of the previous file
+        2:   94:    while (temp != NULL) {
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        1:   95:        if (strcmp(temp->name, fileName) == 0) { // Check if the name of the file matches the given name
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   96:            if (prev == NULL) { // If the file to be deleted is the first in the list
+branch  0 never executed
+branch  1 never executed
+    #####:   97:                currentDirectory->files = temp->next; // Update the head of the file list
+        -:   98:            } else {
+    #####:   99:                prev->next = temp->next; // Link the previous file to the next file, skipping the current file
+        -:  100:            }
+    #####:  101:            free(temp->name); // Free the memory allocated for the name of the file
+    #####:  102:            free(temp); // Free the memory allocated for the file
+    #####:  103:            return; // Exit the function
+        -:  104:        }
+        1:  105:        prev = temp; // Move the previous pointer to the current file
+        1:  106:        temp = temp->next; // Move to the next file
+        -:  107:    }
+        1:  108:    printf("File not found.\n"); // Print a message if the file is not found
+call    0 returned 100%
+        -:  109:}
+        -:  110:
+        -:  111:// Function to delete a directory
+function deleteDirectory called 0 returned 0% blocks executed 0%
+    #####:  112:void deleteDirectory(const char* directoryName) {
+    #####:  113:    Directory* temp = currentDirectory->subdirectories; // Initialize a temporary pointer to traverse subdirectories
+    #####:  114:    Directory* prev = NULL; // Initialize a pointer to keep track of the previous directory
+    #####:  115:    while (temp != NULL) {
+branch  0 never executed
+branch  1 never executed
+    #####:  116:        if (strcmp(temp->name, directoryName) == 0) { // Check if the name of the directory matches the given name
+branch  0 never executed
+branch  1 never executed
+    #####:  117:            if (prev == NULL) { // If the directory to be deleted is the first in the list
+branch  0 never executed
+branch  1 never executed
+    #####:  118:                currentDirectory->subdirectories = temp->next; // Update the head of the directory list
+        -:  119:            } else {
+    #####:  120:                prev->next = temp->next; // Link the previous directory to the next directory, skipping the current directory
+        -:  121:            }
+    #####:  122:            free(temp->name); // Free the memory allocated for the name of the directory
+    #####:  123:            free(temp); // Free the memory allocated for the directory
+    #####:  124:            return; // Exit the function
+        -:  125:        }
+    #####:  126:        prev = temp; // Move the previous pointer to the current directory
+    #####:  127:        temp = temp->next; // Move to the next directory
+        -:  128:    }
+    #####:  129:    printf("Directory not found.\n"); // Print a message if the directory is not found
+call    0 never executed
+        -:  130:}
+        -:  131:
+        -:  132:// Function to search for a file
+function searchFile called 1 returned 100% blocks executed 75%
+        1:  133:void searchFile(const char* fileName) {
+        1:  134:    File* temp = currentDirectory->files; // Initialize a temporary pointer to traverse files
+        2:  135:    while (temp != NULL) {
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        1:  136:        if (strcmp(temp->name, fileName) == 0) { // Check if the name of the file matches the given name
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:  137:            printf("File found: %s, Size: %d\n", temp->name, temp->size); // Print the name and size of the file
+call    0 never executed
+    #####:  138:            return; // Exit the function
+        -:  139:        }
+        1:  140:        temp = temp->next; // Move to the next file
+        -:  141:    }
+        1:  142:    printf("File not found.\n"); // Print a message if the file is not found
+call    0 returned 100%
+        -:  143:}

@@ -1,0 +1,162 @@
+        -:    0:Source:graph.c
+        -:    1:#include "graph.h"  // Including the header file for the Social Network Management System
+        -:    2:
+function createFriendNode called 16 returned 100% blocks executed 60%
+       16:    3:FriendNode* createFriendNode(int userId) {  // Function to create a new friend node for a given user ID
+       16:    4:    FriendNode* node = (FriendNode*)malloc(sizeof(FriendNode));  // Allocating memory for the new friend node
+       16:    5:    if (node == NULL) {  // Checking if memory allocation failed
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:    6:        printf("Memory allocation failed.\n");  // Printing an error message
+call    0 never executed
+    #####:    7:        exit(EXIT_FAILURE);  // Exiting the program with an error code
+call    0 never executed
+        -:    8:    }
+       16:    9:    node->userId = userId;  // Setting the user ID for the new friend node
+       16:   10:    node->next = NULL;  // Initializing the next pointer to NULL
+       16:   11:    return node;  // Returning the newly created friend node
+        -:   12:}
+        -:   13:
+function createSocialNetwork called 1 returned 100% blocks executed 60%
+        1:   14:SocialNetwork* createSocialNetwork() {  // Function to create a new social network
+        1:   15:    SocialNetwork* network = (SocialNetwork*)malloc(sizeof(SocialNetwork));  // Allocating memory for the new social network
+        1:   16:    if (network == NULL) {  // Checking if memory allocation failed
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   17:        printf("Memory allocation failed.\n");  // Printing an error message
+call    0 never executed
+    #####:   18:        exit(EXIT_FAILURE);  // Exiting the program with an error code
+call    0 never executed
+        -:   19:    }
+        1:   20:    network->totalUsers = 0;  // Initializing the total number of users to 0
+        1:   21:    return network;  // Returning the newly created social network
+        -:   22:}
+        -:   23:
+function addUserProfile called 5 returned 100% blocks executed 60%
+        5:   24:void addUserProfile(SocialNetwork* network, char* name, char* interests) {  // Function to add a new user profile to the social network
+        5:   25:    if (network->totalUsers >= MAX_USERS) {  // Checking if the maximum user limit has been reached
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   26:        printf("Max user limit reached.\n");  // Printing a message indicating the limit has been reached
+call    0 never executed
+    #####:   27:        return;  // Returning without adding the user profile
+        -:   28:    }
+        5:   29:    strcpy(network->profiles[network->totalUsers].name, name);  // Copying the name to the new user profile
+        5:   30:    strcpy(network->profiles[network->totalUsers].interests, interests);  // Copying the interests to the new user profile
+        5:   31:    network->friends[network->totalUsers] = NULL;  // Initializing the friends list for the new user profile to NULL
+        5:   32:    network->totalUsers++;  // Incrementing the total number of users in the social network
+        -:   33:}
+        -:   34:
+function findUserByName called 26 returned 100% blocks executed 86%
+       26:   35:int findUserByName(SocialNetwork* network, char* name) {  // Function to find a user in the social network by name
+       73:   36:    for (int i = 0; i < network->totalUsers; i++) {  // Looping through all user profiles in the network
+branch  0 taken 100%
+branch  1 taken 0% (fallthrough)
+       73:   37:        if (strcmp(network->profiles[i].name, name) == 0) {  // Checking if the name matches
+branch  0 taken 36% (fallthrough)
+branch  1 taken 64%
+       26:   38:            return i;  // Returning the index of the user profile
+        -:   39:        }
+        -:   40:    }
+    #####:   41:    return -1;  // Returning -1 if the user was not found
+        -:   42:}
+        -:   43:
+function addFriend called 8 returned 100% blocks executed 80%
+        8:   44:void addFriend(SocialNetwork* network, char* userName1, char* userName2) {  // Function to add a friend connection between two users
+        8:   45:    int user1Index = findUserByName(network, userName1);  // Finding the index of the first user
+call    0 returned 100%
+        8:   46:    int user2Index = findUserByName(network, userName2);  // Finding the index of the second user
+call    0 returned 100%
+        8:   47:    if (user1Index == -1 || user2Index == -1) {  // Checking if either user was not found
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+branch  2 taken 0% (fallthrough)
+branch  3 taken 100%
+    #####:   48:        printf("User not found.\n");  // Printing an error message
+call    0 never executed
+    #####:   49:        return;  // Returning without adding the friend connection
+        -:   50:    }
+        -:   51:
+        8:   52:    FriendNode* friend1 = createFriendNode(user2Index);  // Creating a new friend node for the second user
+call    0 returned 100%
+        8:   53:    friend1->next = network->friends[user1Index];  // Adding the new friend node to the list of friends for the first user
+        8:   54:    network->friends[user1Index] = friend1;  // Updating the list of friends for the first user
+        -:   55:
+        8:   56:    FriendNode* friend2 = createFriendNode(user1Index);  // Creating a new friend node for the first user
+call    0 returned 100%
+        8:   57:    friend2->next = network->friends[user2Index];  // Adding the new friend node to the list of friends for the second user
+        8:   58:    network->friends[user2Index] = friend2;  // Updating the list of friends for the second user
+        -:   59:}
+        -:   60:
+function recommendFriends called 5 returned 100% blocks executed 88%
+        5:   61:void recommendFriends(SocialNetwork* network, char* userName) {  // Function to recommend friends for a user
+        5:   62:    int userIndex = findUserByName(network, userName);  // Finding the index of the user
+call    0 returned 100%
+        5:   63:    if (userIndex == -1) {  // Checking if the user was not found
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   64:        printf("User not found.\n");  // Printing an error message
+call    0 never executed
+    #####:   65:        return;  // Returning without recommending friends
+        -:   66:    }
+        -:   67:
+       30:   68:    for (int i = 0; i < network->totalUsers; i++) {  // Looping through all user profiles in the network
+branch  0 taken 83%
+branch  1 taken 17% (fallthrough)
+       25:   69:        if (i != userIndex) {  // Checking if the user is not the same as the current user
+branch  0 taken 80% (fallthrough)
+branch  1 taken 20%
+       20:   70:            FriendNode* current = network->friends[userIndex];  // Getting the list of friends for the current user
+       20:   71:            int isFriend = 0;  // Flag to indicate if the current user is already a friend
+       49:   72:            while (current != NULL) {  // Looping through the list of friends
+branch  0 taken 92%
+branch  1 taken 8% (fallthrough)
+       45:   73:                if (current->userId == i) {  // Checking if the current user is already a friend
+branch  0 taken 36% (fallthrough)
+branch  1 taken 64%
+       16:   74:                    isFriend = 1;  // Setting the flag to true
+       16:   75:                    break;  // Exiting the loop
+        -:   76:                }
+       29:   77:                current = current->next;  // Moving to the next friend in the list
+        -:   78:            }
+       20:   79:            if (!isFriend) {  // Checking if the current user is not already a friend
+branch  0 taken 20% (fallthrough)
+branch  1 taken 80%
+        4:   80:                printf("Recommendation: %s\n", network->profiles[i].name);  // Printing the recommendation
+call    0 returned 100%
+        -:   81:            }
+        -:   82:        }
+        -:   83:    }
+        -:   84:}
+        -:   85:
+function displayFriendList called 5 returned 100% blocks executed 80%
+        5:   86:void displayFriendList(SocialNetwork* network, char* userName) {  // Function to display the friend list for a user
+        5:   87:    int userIndex = findUserByName(network, userName);  // Finding the index of the user
+call    0 returned 100%
+        5:   88:    if (userIndex == -1) {  // Checking if the user was not found
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   89:        printf("User not found.\n");  // Printing an error message
+call    0 never executed
+    #####:   90:        return;  // Returning without displaying the friend list
+        -:   91:    }
+        -:   92:
+        5:   93:    FriendNode* current = network->friends[userIndex];  // Getting the list of friends for the user
+        5:   94:    printf("Friend List of %s:\n", userName);  // Printing the heading for the friend list
+call    0 returned 100%
+       21:   95:    while (current != NULL) {  // Looping through the list of friends
+branch  0 taken 76%
+branch  1 taken 24% (fallthrough)
+       16:   96:        printf("- %s\n", network->profiles[current->userId].name);  // Printing the name of each friend
+call    0 returned 100%
+       16:   97:        current = current->next;  // Moving to the next friend in the list
+        -:   98:    }
+        -:   99:}
+        -:  100:
+function displayNewsFeed called 0 returned 0% blocks executed 0%
+    #####:  101:void displayNewsFeed() {  // Function to display the news feed (placeholder)
+        -:  102:    // Placeholder for displaying news feed
+    #####:  103:    printf("Displaying news feed...\n");
+call    0 never executed
+    #####:  104:}
+        -:  105:

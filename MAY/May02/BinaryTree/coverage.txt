@@ -1,0 +1,22 @@
+File 'main.c'
+Lines executed:87.80% of 41
+Branches executed:100.00% of 24
+Taken at least once:79.17% of 24
+Calls executed:73.33% of 15
+Creating 'main.c.gcov'
+
+File 'stack.c'
+Lines executed:83.33% of 24
+Branches executed:100.00% of 4
+Taken at least once:50.00% of 4
+Calls executed:20.00% of 5
+Creating 'stack.c.gcov'
+
+File 'tree.c'
+Lines executed:86.44% of 59
+Branches executed:94.29% of 35
+Taken at least once:74.29% of 35
+Calls executed:83.33% of 12
+Creating 'tree.c.gcov'
+
+Lines executed:86.29% of 124

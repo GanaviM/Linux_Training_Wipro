@@ -1,0 +1,21 @@
+THIS IS THE FILE CREATED AND USED TO CHECK HEAD, TAIL, LESS, MORE COMMANDS
+
+
+Drivers are used to help the hardware devices interact with the operating system. In windows, all the devices and drivers are grouped together in a single console called device manager. In Linux, even the hardware devices are treated like ordinary files, which makes it easier for the software to interact with the device drivers. When a device is connected to the system, a device file is created in /dev directory. 
+
+Most Common types of devices in Linux:
+
+    Character devices – These devices transmit the data character by characters, like a mouse or a keyboard.
+    Block devices – These devices transfer unit of data storage called a block, USB drives, hard drives, and CD ROMs
+
+What is linux?
+
+Linux is a free and open-source software operating system , which developed by linus torvalds. It came from a unix family. it is compatibility with all major computer hardware such as x86 , ARM etc.
+
+File System in Linux
+
+In linux everything is represented as a file including a hardware program, the files are stored in a directory , and every directory contains a file with a tree structure. That is called file system hierarchy. Linux uses single rooted , inverted tree like structure. Root directory represents with / (forward slash). it is a top-level directory in linux.
+
+Clear the Terminal : In our daily life, we use to work on Terminal if we are using LINUX. Continuous working on terminal makes the terminal screen full of commands and for removing them and making our screen totally free of character, we often use clear command. Key combination ‘Ctrl+l‘ has the same effect as ‘clear‘ command. So from next time use ctrl+l to clear your Linux Command Line Interface.
+Note: Since ctrl+l is a key combination, so we can not use it inside a script. If we need to clear screen inside a shell script, we just have to call command ‘clear’.
+Run command and get back to the directory, together:  This is also an amazing hack not known to many people. We may run command no matter what it is and then return back to the current directory. For this, all we need to do is to run the command in parentheses i.e., in between ( and ).

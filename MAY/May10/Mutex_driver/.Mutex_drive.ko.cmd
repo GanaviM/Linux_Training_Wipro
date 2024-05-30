@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May10/Mutex_driver/Mutex_drive.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/MAY/May10/Mutex_driver/Mutex_drive.ko /home/rps/MAY/May10/Mutex_driver/Mutex_drive.o /home/rps/MAY/May10/Mutex_driver/Mutex_drive.mod.o;  make -f ./arch/x86/Makefile.postlink /home/rps/MAY/May10/Mutex_driver/Mutex_drive.ko

@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May29/Even_odd_interrupt/evenOdd_interrupt.mod := printf '%s\n'   evenOdd_interrupt.o | awk '!x[$$0]++ { print("/home/rps/MAY/May29/Even_odd_interrupt/"$$0) }' > /home/rps/MAY/May29/Even_odd_interrupt/evenOdd_interrupt.mod

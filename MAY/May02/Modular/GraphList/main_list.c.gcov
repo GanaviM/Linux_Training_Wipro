@@ -1,0 +1,39 @@
+        -:    0:Source:main_list.c
+        -:    1:#include "graph.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <time.h> // Include time.h for clock() function
+        -:    4:
+function main called 1 returned 100% blocks executed 100%
+        1:    5:int main() {
+        1:    6:    int numVertices = 4;
+        -:    7:    
+        -:    8:    // Record the start time
+        1:    9:    clock_t start = clock();
+call    0 returned 100%
+        -:   10:    
+        1:   11:    struct Graph* graph = createGraph(numVertices);
+call    0 returned 100%
+        -:   12:    
+        1:   13:    addEdge(graph, 0, 1);
+call    0 returned 100%
+        1:   14:    addEdge(graph, 1, 2);
+call    0 returned 100%
+        1:   15:    addEdge(graph, 2, 3);
+call    0 returned 100%
+        -:   16:    
+        1:   17:    printGraph(graph);
+call    0 returned 100%
+        -:   18:    
+        -:   19:    // Record the end time
+        1:   20:    clock_t end = clock();
+call    0 returned 100%
+        -:   21:    
+        -:   22:    // Calculate CPU time
+        1:   23:    double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        -:   24:    
+        -:   25:    // Print CPU time
+        1:   26:    printf("CPU time used: %f seconds\n", cpu_time_used);
+call    0 returned 100%
+        -:   27:    
+        1:   28:    return 0;
+        -:   29:}

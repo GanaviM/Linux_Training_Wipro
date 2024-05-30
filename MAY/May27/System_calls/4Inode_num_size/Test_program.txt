@@ -1,0 +1,3 @@
+In this program, lstat system call is used to retrieve the file information of the specific file we enter when the program is compiled.
+It checks for the block size, Inode number.
+When compiled it asks for the file to be retrieved so before or after compiling just create a file with specific and give the filaname to theprogram while compiling for the retrieve of the file information.

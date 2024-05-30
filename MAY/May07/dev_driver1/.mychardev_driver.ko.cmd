@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/Mychardev/mychardev_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/MAY/Mychardev/mychardev_driver.ko /home/rps/MAY/Mychardev/mychardev_driver.o /home/rps/MAY/Mychardev/mychardev_driver.mod.o;  make -f ./arch/x86/Makefile.postlink /home/rps/MAY/Mychardev/mychardev_driver.ko

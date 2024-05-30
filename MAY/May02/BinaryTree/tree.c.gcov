@@ -1,0 +1,149 @@
+        -:    0:Source:tree.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <ctype.h>
+        -:    4:#include <string.h>
+        -:    5:#include "tree.h"
+        -:    6:#include "stack.h"
+        -:    7:
+        -:    8:// Function to create a new tree node
+function createNode called 7 returned 100% blocks executed 60%
+        7:    9:struct TreeNode* createNode(char value) {
+        7:   10:    struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        7:   11:    if (newNode == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   12:        printf("Memory allocation failed!\n");
+call    0 never executed
+    #####:   13:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   14:    }
+        7:   15:    newNode->data = value;
+        7:   16:    newNode->left = NULL;
+        7:   17:    newNode->right = NULL;
+        7:   18:    return newNode;
+        -:   19:}
+        -:   20:
+        -:   21:// Function to build a binary expression tree from a postfix expression
+function buildTree called 1 returned 100% blocks executed 93%
+        1:   22:struct TreeNode* buildTree(char* postfix) {
+        -:   23:    struct TreeNode* stack[100]; // Assuming maximum 100 elements in the stack
+        1:   24:    int top = -1;
+        -:   25:    struct TreeNode *t, *t1, *t2;
+        -:   26:
+        8:   27:    for (int i = 0; postfix[i] != '\0'; i++) {
+branch  0 taken 88%
+branch  1 taken 12% (fallthrough)
+        7:   28:        if (isdigit(postfix[i])) {
+branch  0 taken 57% (fallthrough)
+branch  1 taken 43%
+        4:   29:            t = createNode(postfix[i]);
+call    0 returned 100%
+        4:   30:            stack[++top] = t;
+       3*:   31:        } else if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/') {
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+branch  2 taken 50% (fallthrough)
+branch  3 taken 50%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+branch  6 never executed
+branch  7 never executed
+        3:   32:            t = createNode(postfix[i]);
+call    0 returned 100%
+        3:   33:            t1 = stack[top--];
+        3:   34:            t2 = stack[top--];
+        3:   35:            t->right = t1;
+        3:   36:            t->left = t2;
+        3:   37:            stack[++top] = t;
+        -:   38:        }
+        -:   39:    }
+        1:   40:    return stack[top];
+        -:   41:}
+        -:   42:
+        -:   43:// Function to perform an iterative inorder traversal of a binary expression tree
+function inorderTraversal called 1 returned 100% blocks executed 93%
+        1:   44:void inorderTraversal(struct TreeNode* root) {
+        1:   45:    if (root == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   46:        return;
+        -:   47:    }
+        -:   48:
+        1:   49:    struct TreeNode* current = root;
+        1:   50:    struct StackNode* stack = NULL;
+        -:   51:
+        8:   52:    while (current != NULL || !isEmpty(stack)) {
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+call    2 returned 100%
+branch  3 taken 75%
+branch  4 taken 25% (fallthrough)
+       14:   53:        while (current != NULL) {
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        7:   54:            push(&stack, current);
+call    0 returned 100%
+        7:   55:            current = current->left;
+        -:   56:        }
+        7:   57:        current = pop(&stack);
+call    0 returned 100%
+        7:   58:        printf("%c ", current->data);
+call    0 returned 100%
+        7:   59:        current = current->right;
+        -:   60:    }
+        -:   61:}
+        -:   62:
+        -:   63:// Function to evaluate an expression tree
+function evaluateExpression called 7 returned 100% blocks executed 79%
+        7:   64:int evaluateExpression(struct TreeNode* root) {
+        7:   65:    if (root == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   66:        return 0;
+        -:   67:    }
+        7:   68:    if (root->left == NULL && root->right == NULL) {
+branch  0 taken 57% (fallthrough)
+branch  1 taken 43%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+        4:   69:        return root->data - '0';
+        -:   70:    }
+        -:   71:
+        3:   72:    int left_val = evaluateExpression(root->left);
+call    0 returned 100%
+        3:   73:    int right_val = evaluateExpression(root->right);
+call    0 returned 100%
+        -:   74:
+        3:   75:    switch (root->data) {
+branch  0 taken 33%
+branch  1 taken 33%
+branch  2 taken 33%
+branch  3 taken 0%
+branch  4 taken 0%
+        1:   76:        case '+':
+        1:   77:            return left_val + right_val;
+        1:   78:        case '-':
+        1:   79:            return left_val - right_val;
+        1:   80:        case '*':
+        1:   81:            return left_val * right_val;
+    #####:   82:        case '/':
+    #####:   83:            return left_val / right_val;
+    #####:   84:        default:
+    #####:   85:            return 0;
+        -:   86:    }
+        -:   87:}
+        -:   88:
+        -:   89:// Function to deallocate memory for the tree nodes
+function freeTree called 15 returned 100% blocks executed 100%
+       15:   90:void freeTree(struct TreeNode* root) {
+       15:   91:    if (root != NULL) {
+branch  0 taken 47% (fallthrough)
+branch  1 taken 53%
+        7:   92:        freeTree(root->left);
+call    0 returned 100%
+        7:   93:        freeTree(root->right);
+call    0 returned 100%
+        7:   94:        free(root);
+        -:   95:    }
+       15:   96:}

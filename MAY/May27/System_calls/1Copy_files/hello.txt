@@ -1,0 +1,4 @@
+This is the system call program where the content of the one file is getting copied to another file.
+This program creates the copy of the source file(hello.txt) automatically once the program is run.
+u just need to create the source file and copied file will be created once compiled
+

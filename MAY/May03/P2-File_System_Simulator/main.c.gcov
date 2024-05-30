@@ -1,0 +1,82 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <time.h> // Include the time.h header for clock function
+        -:    3:#include "file_system.h"
+        -:    4:
+        -:    5:// Declare currentDirectory as an extern variable
+        -:    6:extern Directory* currentDirectory;
+        -:    7:
+function main called 1 returned 100% blocks executed 100%
+        1:    8:int main() {
+        -:    9:    clock_t start, end; // Variables to store start and end CPU time
+        -:   10:
+        -:   11:    // Initialize the file system
+        1:   12:    initializeFileSystem();
+call    0 returned 100%
+        -:   13:
+        -:   14:    // Create some directories and files
+        1:   15:    createDirectory("documents");
+call    0 returned 100%
+        1:   16:    createDirectory("images");
+call    0 returned 100%
+        1:   17:    createFile("document1.txt", 100);
+call    0 returned 100%
+        1:   18:    createFile("image1.jpg", 500);
+call    0 returned 100%
+        -:   19:
+        -:   20:    // Print the current directory contents
+        1:   21:    printf("Current directory contents:\n");
+call    0 returned 100%
+        1:   22:    viewDirectoryContents(currentDirectory->name);
+call    0 returned 100%
+        -:   23:
+        -:   24:    // Start measuring CPU time
+        1:   25:    start = clock();
+call    0 returned 100%
+        -:   26:
+        -:   27:    // Navigate into 'documents' directory and create a file
+        1:   28:    printf("\nNavigating into 'documents' directory...\n");
+call    0 returned 100%
+        1:   29:    navigateIntoDirectory("documents");
+call    0 returned 100%
+        1:   30:    createFile("document2.txt", 200);
+call    0 returned 100%
+        -:   31:
+        -:   32:    // Stop measuring CPU time
+        1:   33:    end = clock();
+call    0 returned 100%
+        -:   34:
+        -:   35:    // Calculate CPU time elapsed
+        1:   36:    double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        -:   37:
+        -:   38:    // Print the elapsed CPU time
+        1:   39:    printf("\nCPU time used: %.6f seconds\n", cpu_time_used);
+call    0 returned 100%
+        -:   40:
+        -:   41:    // Print the current directory contents again
+        1:   42:    printf("\nCurrent directory contents:\n");
+call    0 returned 100%
+        1:   43:    viewDirectoryContents(currentDirectory->name);
+call    0 returned 100%
+        -:   44:
+        -:   45:    // Search for a file
+        1:   46:    printf("\nSearching for 'image1.jpg'...\n");
+call    0 returned 100%
+        1:   47:    searchFile("image1.jpg");
+call    0 returned 100%
+        -:   48:
+        -:   49:    // Delete a file
+        1:   50:    printf("\nDeleting 'document1.txt'...\n");
+call    0 returned 100%
+        1:   51:    deleteFile("document1.txt");
+call    0 returned 100%
+        -:   52:
+        -:   53:    // Print the current directory contents one more time
+        1:   54:    printf("\nCurrent directory contents:\n");
+call    0 returned 100%
+        1:   55:    viewDirectoryContents(currentDirectory->name);
+call    0 returned 100%
+        -:   56:
+        1:   57:    return 0;
+        -:   58:}
+        -:   59:

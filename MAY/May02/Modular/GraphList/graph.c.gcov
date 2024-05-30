@@ -1,0 +1,65 @@
+        -:    0:Source:graph.c
+        -:    1:#include "graph.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+        -:    5:// Function to create a new node
+function createNode called 3 returned 100% blocks executed 100%
+        3:    6:struct Node* createNode(int vertex) {
+        3:    7:    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        3:    8:    newNode->vertex = vertex;
+        3:    9:    newNode->next = NULL;
+        3:   10:    return newNode;
+        -:   11:}
+        -:   12:
+        -:   13:// Function to create a graph with numVertices vertices
+function createGraph called 1 returned 100% blocks executed 100%
+        1:   14:struct Graph* createGraph(int numVertices) {
+        1:   15:    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+        1:   16:    graph->numVertices = numVertices;
+        -:   17:
+        -:   18:    // Create an array of pointers to Node to represent adjacency lists
+        1:   19:    graph->adjLists = (struct Node**)malloc(numVertices * sizeof(struct Node*));
+        -:   20:
+        -:   21:    // Initialize all adjacency lists as empty
+        5:   22:    for (int i = 0; i < numVertices; ++i) {
+branch  0 taken 80%
+branch  1 taken 20% (fallthrough)
+        4:   23:        graph->adjLists[i] = NULL;
+        -:   24:    }
+        -:   25:
+        1:   26:    return graph;
+        -:   27:}
+        -:   28:
+        -:   29:// Function to add an edge to the graph
+function addEdge called 3 returned 100% blocks executed 100%
+        3:   30:void addEdge(struct Graph* graph, int src, int dest) {
+        -:   31:    // Create a new node for the destination vertex
+        3:   32:    struct Node* newNode = createNode(dest);
+call    0 returned 100%
+        -:   33:
+        -:   34:    // Add the node to the front of the adjacency list of source vertex
+        3:   35:    newNode->next = graph->adjLists[src];
+        3:   36:    graph->adjLists[src] = newNode;
+        3:   37:}
+        -:   38:
+        -:   39:// Function to print the graph
+function printGraph called 1 returned 100% blocks executed 100%
+        1:   40:void printGraph(struct Graph* graph) {
+        5:   41:    for (int v = 0; v < graph->numVertices; ++v) {
+branch  0 taken 80%
+branch  1 taken 20% (fallthrough)
+        4:   42:        printf("\nAdjacency list of vertex %d\n head ", v);
+call    0 returned 100%
+        4:   43:        struct Node* temp = graph->adjLists[v];
+        7:   44:        while (temp) {
+branch  0 taken 43%
+branch  1 taken 57% (fallthrough)
+        3:   45:            printf("-> %d ", temp->vertex);
+call    0 returned 100%
+        3:   46:            temp = temp->next;
+        -:   47:        }
+        4:   48:        printf("\n");
+call    0 returned 100%
+        -:   49:    }
+        1:   50:}

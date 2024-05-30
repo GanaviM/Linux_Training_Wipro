@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May10/ioctl_reverse/reverse_ioctl.mod := printf '%s\n'   reverse_ioctl.o | awk '!x[$$0]++ { print("/home/rps/MAY/May10/ioctl_reverse/"$$0) }' > /home/rps/MAY/May10/ioctl_reverse/reverse_ioctl.mod

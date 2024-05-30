@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May22/Struct_Add_Int_type2/kernel_addsub_int.mod := printf '%s\n'   kernel_addsub_int.o | awk '!x[$$0]++ { print("/home/rps/MAY/May22/Struct_Add_Int_type2/"$$0) }' > /home/rps/MAY/May22/Struct_Add_Int_type2/kernel_addsub_int.mod

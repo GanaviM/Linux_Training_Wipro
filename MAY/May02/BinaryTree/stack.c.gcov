@@ -1,0 +1,54 @@
+        -:    0:Source:stack.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include "stack.h"
+        -:    4:
+        -:    5:// Function to create a new stack node
+function createStackNode called 7 returned 100% blocks executed 60%
+        7:    6:struct StackNode* createStackNode(struct TreeNode* treeNode) {
+        7:    7:    struct StackNode* newNode = (struct StackNode*)malloc(sizeof(struct StackNode));
+        7:    8:    if (newNode == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:    9:        printf("Memory allocation failed!\n");
+call    0 never executed
+    #####:   10:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   11:    }
+        7:   12:    newNode->treeNode = treeNode;
+        7:   13:    newNode->next = NULL;
+        7:   14:    return newNode;
+        -:   15:}
+        -:   16:
+        -:   17:// Function to push a tree node onto the stack
+function push called 7 returned 100% blocks executed 100%
+        7:   18:void push(struct StackNode** top, struct TreeNode* treeNode) {
+        7:   19:    struct StackNode* newNode = createStackNode(treeNode);
+call    0 returned 100%
+        7:   20:    newNode->next = *top;
+        7:   21:    *top = newNode;
+        7:   22:}
+        -:   23:
+        -:   24:// Function to pop a tree node from the stack
+function pop called 7 returned 100% blocks executed 60%
+        7:   25:struct TreeNode* pop(struct StackNode** top) {
+        7:   26:    if (*top == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   27:        printf("Stack underflow!\n");
+call    0 never executed
+    #####:   28:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   29:    }
+        7:   30:    struct TreeNode* treeNode = (*top)->treeNode;
+        7:   31:    struct StackNode* temp = *top;
+        7:   32:    *top = (*top)->next;
+        7:   33:    free(temp);
+        7:   34:    return treeNode;
+        -:   35:}
+        -:   36:
+        -:   37:// Function to check if the stack is empty
+function isEmpty called 4 returned 100% blocks executed 100%
+        4:   38:int isEmpty(struct StackNode* top) {
+        4:   39:    return top == NULL;
+        -:   40:}

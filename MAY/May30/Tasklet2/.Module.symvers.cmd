@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May30/Tasklet2/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/rps/MAY/May30/Tasklet2/Module.symvers -T /home/rps/MAY/May30/Tasklet2/modules.order -i Module.symvers -e 

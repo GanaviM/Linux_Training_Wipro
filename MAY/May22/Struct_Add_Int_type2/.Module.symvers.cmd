@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May22/Struct_Add_Int_type2/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/rps/MAY/May22/Struct_Add_Int_type2/Module.symvers -T /home/rps/MAY/May22/Struct_Add_Int_type2/modules.order -i Module.symvers -e 

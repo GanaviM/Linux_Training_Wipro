@@ -1,0 +1,1 @@
+savedcmd_/home/rps/MAY/May21/simple_char_driver/kernel_char_driver.mod := printf '%s\n'   kernel_char_driver.o | awk '!x[$$0]++ { print("/home/rps/MAY/May21/simple_char_driver/"$$0) }' > /home/rps/MAY/May21/simple_char_driver/kernel_char_driver.mod
