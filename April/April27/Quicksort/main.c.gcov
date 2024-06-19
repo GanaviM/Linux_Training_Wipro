@@ -1,0 +1,39 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include "quick_sort.h"
+        -:    3:
+function main called 1 returned 100% blocks executed 100%
+        1:    4:int main() {
+        1:    5:    int array[] = {10, 7, 8, 9, 1, 5}; // Example array to be sorted
+        1:    6:    int size = sizeof(array) / sizeof(array[0]); // Calculate the size of the array
+        -:    7:
+        -:    8:    // Display the original array
+        1:    9:    printf("Original array: ");
+call    0 returned 100%
+        7:   10:    for (int i = 0; i < size; i++) {
+branch  0 taken 86%
+branch  1 taken 14% (fallthrough)
+        6:   11:        printf("%d ", array[i]);
+call    0 returned 100%
+        -:   12:    }
+        1:   13:    printf("\n");
+call    0 returned 100%
+        -:   14:
+        -:   15:    // Perform quicksort
+        1:   16:    quickSort(array, 0, size - 1);
+call    0 returned 100%
+        -:   17:
+        -:   18:    // Display the sorted array
+        1:   19:    printf("Sorted array: ");
+call    0 returned 100%
+        7:   20:    for (int i = 0; i < size; i++) {
+branch  0 taken 86%
+branch  1 taken 14% (fallthrough)
+        6:   21:        printf("%d ", array[i]);
+call    0 returned 100%
+        -:   22:    }
+        1:   23:    printf("\n");
+call    0 returned 100%
+        -:   24:
+        1:   25:    return 0;
+        -:   26:}

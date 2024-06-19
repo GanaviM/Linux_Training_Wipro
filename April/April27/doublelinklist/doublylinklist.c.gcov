@@ -1,0 +1,89 @@
+        -:    0:Source:doublylinklist.c
+        -:    1:#include "doublylinklist.h"
+        -:    2:
+        -:    3:// Function to create a new node
+function createNode called 6 returned 100% blocks executed 100%
+        6:    4:Node* createNode(int data) {
+        6:    5:    Node* newNode = (Node*)malloc(sizeof(Node)); // Allocate memory for the new node
+        6:    6:    if (newNode != NULL) { // Check if memory allocation was successful
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        6:    7:        newNode->data = data; // Set the data of the new node
+        6:    8:        newNode->prev = NULL; // Initialize the prev pointer to NULL
+        6:    9:        newNode->next = NULL; // Initialize the next pointer to NULL
+        -:   10:    }
+        6:   11:    return newNode; // Return the pointer to the new node
+        -:   12:}
+        -:   13:
+        -:   14:// Function to insert a new node at the end of the list
+function insertNode called 6 returned 100% blocks executed 82%
+        6:   15:Node* insertNode(Node* head, int data) {
+        6:   16:    Node* newNode = createNode(data); // Create a new node
+call    0 returned 100%
+        6:   17:    if (newNode == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   18:        printf("Memory allocation failed.\n");
+call    0 never executed
+    #####:   19:        return head; // Return the current head if memory allocation fails
+        -:   20:    }
+        6:   21:    if (head == NULL) { // If list is empty, new node becomes head
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        2:   22:        return newNode;
+        -:   23:    }
+        4:   24:    Node* current = head;
+        6:   25:    while (current->next != NULL) { // Traverse to the end of the list
+branch  0 taken 33%
+branch  1 taken 67% (fallthrough)
+        2:   26:        current = current->next;
+        -:   27:    }
+        4:   28:    current->next = newNode; // Link new node at the end
+        4:   29:    newNode->prev = current; // Set previous pointer of new node
+        4:   30:    return head; // Return the head of the list
+        -:   31:}
+        -:   32:
+        -:   33:// Function to display the elements of the list forward
+function displayListForward called 2 returned 100% blocks executed 100%
+        2:   34:void displayListForward(Node* head) {
+        2:   35:    printf("List (Forward): ");
+call    0 returned 100%
+        8:   36:    while (head != NULL) { // Traverse the list forward
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+        6:   37:        printf("%d -> ", head->data); // Print the data of the current node
+call    0 returned 100%
+        6:   38:        head = head->next; // Move to the next node
+        -:   39:    }
+        2:   40:    printf("NULL\n");
+call    0 returned 100%
+        2:   41:}
+        -:   42:
+        -:   43:// Function to display the elements of the list backward
+function displayListBackward called 2 returned 100% blocks executed 100%
+        2:   44:void displayListBackward(Node* tail) {
+        2:   45:    printf("List (Backward): ");
+call    0 returned 100%
+        8:   46:    while (tail != NULL) { // Traverse the list backward
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+        6:   47:        printf("%d -> ", tail->data); // Print the data of the current node
+call    0 returned 100%
+        6:   48:        tail = tail->prev; // Move to the previous node
+        -:   49:    }
+        2:   50:    printf("NULL\n");
+call    0 returned 100%
+        2:   51:}
+        -:   52:
+        -:   53:// Function to free the memory allocated for the list
+function freeList called 2 returned 100% blocks executed 100%
+        2:   54:void freeList(Node* head) {
+        2:   55:    Node* current = head;
+        8:   56:    while (current != NULL) { // Traverse the list
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+        6:   57:        Node* temp = current; // Store the current node in a temporary variable
+        6:   58:        current = current->next; // Move to the next node
+        6:   59:        free(temp); // Free the memory of the current node
+        -:   60:    }
+        2:   61:}

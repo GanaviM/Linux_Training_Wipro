@@ -1,0 +1,37 @@
+        -:    0:Source:calculator.c
+        -:    1:// calculator.c
+        -:    2:
+        -:    3:#include <stdio.h>
+        -:    4:
+        -:    5:// Function to add two numbers
+function add called 0 returned 0% blocks executed 0%
+    #####:    6:int add(int a, int b) {
+    #####:    7:    return a + b;
+        -:    8:}
+        -:    9:
+        -:   10:// Function to subtract two numbers
+function subtract called 0 returned 0% blocks executed 0%
+    #####:   11:int subtract(int a, int b) {
+    #####:   12:    return a - b;
+        -:   13:}
+        -:   14:
+        -:   15:// Function to multiply two numbers
+function multiply called 0 returned 0% blocks executed 0%
+    #####:   16:int multiply(int a, int b) {
+    #####:   17:    return a * b;
+        -:   18:}
+        -:   19:
+        -:   20:// Function to divide two numbers
+function divide called 0 returned 0% blocks executed 0%
+    #####:   21:float divide(int a, int b) {
+    #####:   22:    if (b != 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:   23:        return (float)a / b;
+        -:   24:    } else {
+        -:   25:        // Handle division by zero error
+    #####:   26:        printf("Error: Division by zero!\n");
+call    0 never executed
+    #####:   27:        return 0.0;
+        -:   28:    }
+        -:   29:}

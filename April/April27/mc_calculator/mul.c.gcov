@@ -1,0 +1,10 @@
+        -:    0:Source:mul.c
+        -:    1://using header file
+        -:    2:#include "mul.h"
+        -:    3:
+        -:    4://declares function prototype
+function mul called 3 returned 100% blocks executed 100%
+        3:    5:int mul(int x, int y, int z)
+        -:    6:{
+        3:    7:	return x * y * z; //return integer value for product of 3 integers
+        -:    8:}

@@ -1,0 +1,152 @@
+        -:    0:Source:binary_search.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include "binary_search.h"
+        -:    4:
+function createNode called 7 returned 100% blocks executed 60%
+        7:    5:struct node* createNode(int data) {
+        7:    6:    struct node* newNode = (struct node*)malloc(sizeof(struct node));
+        7:    7:    if (newNode == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:    8:        printf("Memory allocation failed\n");
+call    0 never executed
+    #####:    9:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   10:    }
+        7:   11:    newNode->data = data;
+        7:   12:    newNode->left = NULL;
+        7:   13:    newNode->right = NULL;
+        7:   14:    return newNode;
+        -:   15:}
+        -:   16:
+function insert called 17 returned 100% blocks executed 100%
+       17:   17:struct node* insert(struct node* root, int data) {
+       17:   18:    if (root == NULL) {
+branch  0 taken 41% (fallthrough)
+branch  1 taken 59%
+        7:   19:        return createNode(data);
+call    0 returned 100%
+        -:   20:    }
+       10:   21:    if (data < root->data) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        5:   22:        root->left = insert(root->left, data);
+call    0 returned 100%
+        5:   23:    } else if (data > root->data) {
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        5:   24:        root->right = insert(root->right, data);
+call    0 returned 100%
+        -:   25:    }
+       10:   26:    return root;
+        -:   27:}
+        -:   28:
+function search called 2 returned 100% blocks executed 70%
+        2:   29:int search(struct node* root, int data) {
+        2:   30:    if (root == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   31:        return 0;
+        -:   32:    }
+        2:   33:    if (root->data == data) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        1:   34:        return 1;
+        1:   35:    } else if (data < root->data) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   36:        return search(root->left, data);
+call    0 never executed
+        -:   37:    } else {
+        1:   38:        return search(root->right, data);
+call    0 returned 100%
+        -:   39:    }
+        -:   40:}
+        -:   41:
+function inorderTraversal called 28 returned 100% blocks executed 100%
+       28:   42:void inorderTraversal(struct node* root) {
+       28:   43:    if (root != NULL) {
+branch  0 taken 46% (fallthrough)
+branch  1 taken 54%
+       13:   44:        inorderTraversal(root->left);
+call    0 returned 100%
+       13:   45:        printf("%d ", root->data);
+call    0 returned 100%
+       13:   46:        inorderTraversal(root->right);
+call    0 returned 100%
+        -:   47:    }
+       28:   48:}
+        -:   49:
+function deleteTree called 13 returned 100% blocks executed 100%
+       13:   50:void deleteTree(struct node* root) {
+       13:   51:    if (root != NULL) {
+branch  0 taken 46% (fallthrough)
+branch  1 taken 54%
+        6:   52:        deleteTree(root->left);
+call    0 returned 100%
+        6:   53:        deleteTree(root->right);
+call    0 returned 100%
+        6:   54:        free(root);
+        -:   55:    }
+       13:   56:}
+        -:   57:
+function findMin called 2 returned 100% blocks executed 100%
+        2:   58:struct node* findMin(struct node* root) {
+        4:   59:    while (root->left != NULL) {
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        2:   60:        root = root->left;
+        -:   61:    }
+        2:   62:    return root;
+        -:   63:}
+        -:   64:
+function findMax called 1 returned 100% blocks executed 100%
+        1:   65:struct node* findMax(struct node* root) {
+        3:   66:    while (root->right != NULL) {
+branch  0 taken 67%
+branch  1 taken 33% (fallthrough)
+        2:   67:        root = root->right;
+        -:   68:    }
+        1:   69:    return root;
+        -:   70:}
+        -:   71:
+function deleteNode called 3 returned 100% blocks executed 76%
+        3:   72:struct node* deleteNode(struct node* root, int data) {
+        3:   73:    if (root == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   74:        return root;
+        -:   75:    }
+        3:   76:    if (data < root->data) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   77:        root->left = deleteNode(root->left, data);
+call    0 never executed
+        3:   78:    } else if (data > root->data) {
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        1:   79:        root->right = deleteNode(root->right, data);
+call    0 returned 100%
+        -:   80:    } else {
+        2:   81:        if (root->left == NULL) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        1:   82:            struct node* temp = root->right;
+        1:   83:            free(root);
+        1:   84:            return temp;
+        1:   85:        } else if (root->right == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   86:            struct node* temp = root->left;
+    #####:   87:            free(root);
+    #####:   88:            return temp;
+        -:   89:        }
+        1:   90:        struct node* temp = findMin(root->right);
+call    0 returned 100%
+        1:   91:        root->data = temp->data;
+        1:   92:        root->right = deleteNode(root->right, temp->data);
+call    0 returned 100%
+        -:   93:    }
+        2:   94:    return root;
+        -:   95:}

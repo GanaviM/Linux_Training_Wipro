@@ -1,0 +1,10 @@
+        -:    0:Source:hello_dynamic.c
+        -:    1:#include <stdio.h>
+        -:    2:
+        -:    3:// Function to be called dynamically
+function hello_dynamic called 0 returned 0% blocks executed 0%
+    #####:    4:void hello_dynamic() {
+    #####:    5:    printf("Hello, dynamic world!\n");
+call    0 never executed
+    #####:    6:}
+        -:    7:

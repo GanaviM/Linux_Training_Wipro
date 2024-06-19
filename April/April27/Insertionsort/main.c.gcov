@@ -1,0 +1,39 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include "insertion_sort.h"
+        -:    3:
+function main called 1 returned 100% blocks executed 100%
+        1:    4:int main() {
+        1:    5:    int array[] = {12, 11, 13, 5, 6}; // Example array to be sorted
+        1:    6:    int size = sizeof(array) / sizeof(array[0]); // Calculate the size of the array
+        -:    7:
+        -:    8:    // Display the original array
+        1:    9:    printf("Original array: ");
+call    0 returned 100%
+        6:   10:    for (int i = 0; i < size; i++) {
+branch  0 taken 83%
+branch  1 taken 17% (fallthrough)
+        5:   11:        printf("%d ", array[i]);
+call    0 returned 100%
+        -:   12:    }
+        1:   13:    printf("\n");
+call    0 returned 100%
+        -:   14:
+        -:   15:    // Perform insertion sort
+        1:   16:    insertionSort(array, size);
+call    0 returned 100%
+        -:   17:
+        -:   18:    // Display the sorted array
+        1:   19:    printf("Sorted array: ");
+call    0 returned 100%
+        6:   20:    for (int i = 0; i < size; i++) {
+branch  0 taken 83%
+branch  1 taken 17% (fallthrough)
+        5:   21:        printf("%d ", array[i]);
+call    0 returned 100%
+        -:   22:    }
+        1:   23:    printf("\n");
+call    0 returned 100%
+        -:   24:
+        1:   25:    return 0;
+        -:   26:}

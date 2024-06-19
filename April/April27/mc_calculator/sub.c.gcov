@@ -1,0 +1,10 @@
+        -:    0:Source:sub.c
+        -:    1://using header file
+        -:    2:#include "sub.h"
+        -:    3:
+        -:    4://declares function prototype for four integer values
+function sub called 2 returned 100% blocks executed 100%
+        2:    5:int sub(int x, int y, int z, int w)
+        -:    6:{
+        2:    7:	return x - y - z - w; // return subtraction of four numbers
+        -:    8:}

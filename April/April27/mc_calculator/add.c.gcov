@@ -1,0 +1,8 @@
+        -:    0:Source:add.c
+        -:    1:#include "add.h"
+        -:    2://declares function prototype
+function add called 2 returned 100% blocks executed 100%
+        2:    3:int add(int x, int y, int z)
+        -:    4:{
+        2:    5:	return x + y + z; // add three integer value and returns int
+        -:    6:}

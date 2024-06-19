@@ -1,0 +1,60 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <time.h>
+        -:    4:#include "binary_tree.h" // Include the header file containing binary tree functionality
+        -:    5:
+function main called 1 returned 100% blocks executed 100%
+        1:    6:int main() {
+        1:    7:    struct Node* root = NULL;
+        -:    8:    clock_t start, end; // Variables to store start and end time
+        -:    9:    double cpu_time_used; // Variable to store CPU time used
+        -:   10:
+        -:   11:    // Start clock
+        1:   12:    start = clock();
+call    0 returned 100%
+        -:   13:
+        -:   14:    // Insert nodes into the binary tree
+        1:   15:    root = insert(root, 55);
+call    0 returned 100%
+        1:   16:    insert(root, 23);
+call    0 returned 100%
+        1:   17:    insert(root, 15);
+call    0 returned 100%
+        1:   18:    insert(root, 40);
+call    0 returned 100%
+        1:   19:    insert(root, 70);
+call    0 returned 100%
+        1:   20:    insert(root, 63);
+call    0 returned 100%
+        1:   21:    insert(root, 35);
+call    0 returned 100%
+        -:   22:
+        -:   23:    // Print in-order traversal of the binary tree
+        1:   24:    printf("In-order traversal: ");
+call    0 returned 100%
+        1:   25:    inOrder(root);
+call    0 returned 100%
+        1:   26:    printf("\n");
+call    0 returned 100%
+        -:   27:
+        -:   28:    // Calculate the sum of all nodes in the binary tree
+        1:   29:    int sum = add(root);
+call    0 returned 100%
+        1:   30:    printf("Sum of all nodes: %d\n", sum);
+call    0 returned 100%
+        -:   31:
+        -:   32:    // Stop clock
+        1:   33:    end = clock();
+call    0 returned 100%
+        -:   34:
+        -:   35:    // Calculate CPU time used
+        1:   36:    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        1:   37:    printf("CPU time used: %f seconds\n", cpu_time_used);
+call    0 returned 100%
+        -:   38:
+        -:   39:    // Memory deallocation for the binary tree is not shown here to keep the example simple
+        -:   40:
+        1:   41:    return 0;
+        -:   42:}
+        -:   43:

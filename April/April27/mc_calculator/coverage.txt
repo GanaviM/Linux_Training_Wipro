@@ -1,0 +1,33 @@
+File 'main.c'
+Lines executed:100.00% of 40
+Branches executed:100.00% of 7
+Taken at least once:100.00% of 7
+Calls executed:100.00% of 26
+Creating 'main.c.gcov'
+
+File 'add.c'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'add.c.gcov'
+
+File 'sub.c'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'sub.c.gcov'
+
+File 'mul.c'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'mul.c.gcov'
+
+File 'div.c'
+Lines executed:60.00% of 5
+Branches executed:100.00% of 2
+Taken at least once:50.00% of 2
+Calls executed:0.00% of 1
+Creating 'div.c.gcov'
+
+Lines executed:96.08% of 51

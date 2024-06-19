@@ -1,0 +1,10 @@
+CC = gcc
+CFLAGS=-I.
+DEPS = greetings.h
+
+%.o: %.c $(DEPS) 
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+hello: hello.o greetings.o
+	$(CC) -o hello hello.c greetings.o
+

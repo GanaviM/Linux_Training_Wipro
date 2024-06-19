@@ -1,0 +1,3 @@
+test_print: test1.c print.c
+	gcc -o test_print test1.c print.c -I.
+

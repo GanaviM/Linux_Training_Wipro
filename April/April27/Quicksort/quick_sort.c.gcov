@@ -1,0 +1,48 @@
+        -:    0:Source:quick_sort.c
+        -:    1:#include "quick_sort.h"
+        -:    2:
+        -:    3:// Function to partition the array and return the partitioning index
+function partition called 4 returned 100% blocks executed 100%
+        4:    4:int partition(int array[], int low, int high) {
+        4:    5:    int pivot = array[high]; // Pivot element (last element)
+        4:    6:    int i = (low - 1); // Index of smaller element
+        -:    7:
+       15:    8:    for (int j = low; j <= high - 1; j++) {
+branch  0 taken 73%
+branch  1 taken 27% (fallthrough)
+        -:    9:        // If current element is smaller than the pivot
+       11:   10:        if (array[j] < pivot) {
+branch  0 taken 9% (fallthrough)
+branch  1 taken 91%
+        1:   11:            i++; // Increment index of smaller element
+        -:   12:            // Swap array[i] and array[j]
+        1:   13:            int temp = array[i];
+        1:   14:            array[i] = array[j];
+        1:   15:            array[j] = temp;
+        -:   16:        }
+        -:   17:    }
+        -:   18:    // Swap array[i+1] and array[high] (or pivot)
+        4:   19:    int temp = array[i + 1];
+        4:   20:    array[i + 1] = array[high];
+        4:   21:    array[high] = temp;
+        4:   22:    return (i + 1);
+        -:   23:}
+        -:   24:
+        -:   25:// Function to perform quicksort
+function quickSort called 9 returned 100% blocks executed 100%
+        9:   26:void quickSort(int array[], int low, int high) {
+        9:   27:    if (low < high) {
+branch  0 taken 44% (fallthrough)
+branch  1 taken 56%
+        -:   28:        // Partitioning index
+        4:   29:        int pi = partition(array, low, high);
+call    0 returned 100%
+        -:   30:
+        -:   31:        // Recursively sort elements before and after partition
+        4:   32:        quickSort(array, low, pi - 1);
+call    0 returned 100%
+        4:   33:        quickSort(array, pi + 1, high);
+call    0 returned 100%
+        -:   34:    }
+        9:   35:}
+        -:   36:

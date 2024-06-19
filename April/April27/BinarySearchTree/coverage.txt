@@ -1,0 +1,15 @@
+File 'main.c'
+Lines executed:96.15% of 26
+Branches executed:100.00% of 2
+Taken at least once:50.00% of 2
+Calls executed:95.45% of 22
+Creating 'main.c.gcov'
+
+File 'binary_search.c'
+Lines executed:85.94% of 64
+Branches executed:100.00% of 32
+Taken at least once:78.12% of 32
+Calls executed:75.00% of 16
+Creating 'binary_search.c.gcov'
+
+Lines executed:88.89% of 90

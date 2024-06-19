@@ -1,0 +1,15 @@
+File 'calculator.c'
+Lines executed:0.00% of 11
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 1
+Creating 'calculator.c.gcov'
+
+File 'main.c'
+Lines executed:89.47% of 19
+Branches executed:100.00% of 2
+Taken at least once:50.00% of 2
+Calls executed:87.50% of 16
+Creating 'main.c.gcov'
+
+Lines executed:56.67% of 30

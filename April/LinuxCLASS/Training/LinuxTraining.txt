@@ -1,0 +1,2 @@
+This operating system is built upon the Linux kernel (the core of the operating system) which was first released in 1991 by Linus Torvalds, a student from the University of Helsinki, Finland. Initially, Linux was only developed as a hobby and was not intended for widespread use.
+unix has a philosophy that underlies the entire operating system and which strongly affects the way in which administrators and advanced users interact with it. This philosophy is the parent of Linux Philosophy. It is called The Unix Way.

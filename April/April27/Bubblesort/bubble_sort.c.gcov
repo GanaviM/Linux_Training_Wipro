@@ -1,0 +1,24 @@
+        -:    0:Source:bubble_sort.c
+        -:    1:#include "bubble_sort.h"
+        -:    2:
+        -:    3:// Function to perform bubble sort
+function bubbleSort called 1 returned 100% blocks executed 100%
+        1:    4:void bubbleSort(int array[], int size) {
+        7:    5:    for (int i = 0; i < size - 1; i++) {
+branch  0 taken 86%
+branch  1 taken 14% (fallthrough)
+        -:    6:        // Last i elements are already in place, so we don't need to compare them
+       27:    7:        for (int j = 0; j < size - i - 1; j++) {
+branch  0 taken 78%
+branch  1 taken 22% (fallthrough)
+       21:    8:            if (array[j] > array[j + 1]) {
+branch  0 taken 19% (fallthrough)
+branch  1 taken 81%
+        -:    9:                // Swap array[j] and array[j+1]
+        4:   10:                int temp = array[j];
+        4:   11:                array[j] = array[j + 1];
+        4:   12:                array[j + 1] = temp;
+        -:   13:            }
+        -:   14:        }
+        -:   15:    }
+        1:   16:}

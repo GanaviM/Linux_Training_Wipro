@@ -1,0 +1,98 @@
+        -:    0:Source:main.c
+        -:    1://Using headerfiles
+        -:    2:#include "main.h"
+        -:    3:#include <stdio.h>
+        -:    4:#include <stdlib.h>
+        -:    5:
+        -:    6://Main function
+function main called 2 returned 100% blocks executed 100%
+        2:    7:int main() {
+        -:    8:    // Declaring the variable of integer type
+        -:    9:    int choice;
+        -:   10:    int num1, num2, num3, num4, result;
+        -:   11:
+        -:   12:   //Printing the options and inputs 
+        2:   13:    printf("1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Quit\n");
+call    0 returned 100%
+        2:   14:    printf("Enter the option:\n");
+call    0 returned 100%
+        -:   15:
+        -:   16:    //Choosing the options using while loop
+        -:   17:    while (1) {
+       11:   18:        scanf("%d", &choice);
+call    0 returned 100%
+        -:   19:
+       11:   20:        if (choice == 5) {
+branch  0 taken 18% (fallthrough)
+branch  1 taken 82%
+        2:   21:            printf("Exiting program.\n");
+call    0 returned 100%
+        2:   22:            break;
+        -:   23:        }
+        -:   24:
+        -:   25:	//using the switch statment for 
+        9:   26:        switch (choice) {
+branch  0 taken 22%
+branch  1 taken 22%
+branch  2 taken 33%
+branch  3 taken 11%
+branch  4 taken 11%
+        2:   27:            case 1: //Addition of 3 numbers
+        2:   28:		printf("Enter 3 numbers for adding: \n");
+call    0 returned 100%
+        2:   29:                scanf("%d %d %d", &num1, &num2, &num3);
+call    0 returned 100%
+        2:   30:                result = add(num1, num2, num3);
+call    0 returned 100%
+        2:   31:                printf("Sum of %d, %d, and %d is %d\n", num1, num2, num3, result);
+call    0 returned 100%
+        2:   32:		printf("\n\nEnter 1 - 4 for other options or 5 for quiting\n");
+call    0 returned 100%
+        8:   33:                break;
+        2:   34:            case 2: //Subtraction of 4 numbers
+        2:   35:		printf("Enter 4 numbers for subtracting:\n");
+call    0 returned 100%
+        2:   36:                scanf("%d %d %d %d", &num1, &num2, &num3, &num4);
+call    0 returned 100%
+        2:   37:                result = sub(num1, num2, num3, num4);
+call    0 returned 100%
+        2:   38:                printf("Difference of %d, %d, %d, and %d is %d\n", num1, num2, num3, num4, result);
+call    0 returned 100%
+        2:   39:                printf("\n\nEnter 1 - 4 for other options or 5 for quiting\n");
+call    0 returned 100%
+        2:   40:		break;
+        3:   41:            case 3:// Multiplication of three numbers
+        3:   42:		printf("Enter 3  numbers for multiplication:\n");
+call    0 returned 100%
+        3:   43:                scanf("%d %d %d", &num1, &num2, &num3);
+call    0 returned 100%
+        3:   44:                result = mul(num1, num2, num3);
+call    0 returned 100%
+        3:   45:                printf("Product of %d, %d, and %d is %d\n", num1, num2, num3, result);
+call    0 returned 100%
+        3:   46:                printf("\n\nEnter 1 - 4 for other options or 5 for quiting\n");
+call    0 returned 100%
+        3:   47:		break;
+        1:   48:            case 4: //Division of two numbers
+        -:   49:		float num5, num6, result1;//declaring variables of floating type
+        1:   50:		printf("Enter 2 numbers for division:\n");
+call    0 returned 100%
+        1:   51:                scanf("%f %f", &num5, &num6);
+call    0 returned 100%
+        1:   52:                result1 = division(num5, num6);
+call    0 returned 100%
+        1:   53:		printf("Division of %f and %f is %f\n", num5, num6, result1);
+call    0 returned 100%
+        1:   54:		printf("\n\nEnter 1 - 4 for other options or 5 for quiting\n");
+call    0 returned 100%
+        1:   55:                break;
+        1:   56:            default:// default works if cases are not between 1-4 and ask for exit
+        1:   57:                printf("Invalid choice\n");
+call    0 returned 100%
+        1:   58:		printf("Enter 5 to quit\n");
+call    0 returned 100%
+        -:   59:        }
+        -:   60:    }
+        -:   61:
+        2:   62:    return 0;
+        -:   63:}

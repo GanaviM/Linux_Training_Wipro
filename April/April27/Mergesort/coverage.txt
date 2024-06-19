@@ -1,0 +1,15 @@
+File 'main.c'
+Lines executed:100.00% of 13
+Branches executed:100.00% of 4
+Taken at least once:100.00% of 4
+Calls executed:100.00% of 7
+Creating 'main.c.gcov'
+
+File 'merge_sort.c'
+Lines executed:100.00% of 34
+Branches executed:100.00% of 16
+Taken at least once:100.00% of 16
+Calls executed:100.00% of 3
+Creating 'merge_sort.c.gcov'
+
+Lines executed:100.00% of 47

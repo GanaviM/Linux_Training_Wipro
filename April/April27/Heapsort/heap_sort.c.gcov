@@ -1,0 +1,66 @@
+        -:    0:Source:heap_sort.c
+        -:    1:#include "heap_sort.h"
+        -:    2:
+        -:    3:// Function to heapify a subtree rooted with node i
+function heapify called 15 returned 100% blocks executed 100%
+       15:    4:void heapify(int array[], int size, int index) {
+       15:    5:    int largest = index; // Initialize largest as root
+       15:    6:    int left = 2 * index + 1; // Left child index
+       15:    7:    int right = 2 * index + 2; // Right child index
+        -:    8:
+        -:    9:    // If left child is larger than root
+       15:   10:    if (left < size && array[left] > array[largest])
+branch  0 taken 60% (fallthrough)
+branch  1 taken 40%
+branch  2 taken 78% (fallthrough)
+branch  3 taken 22%
+        7:   11:        largest = left;
+        -:   12:
+        -:   13:    // If right child is larger than largest so far
+       15:   14:    if (right < size && array[right] > array[largest])
+branch  0 taken 40% (fallthrough)
+branch  1 taken 60%
+branch  2 taken 33% (fallthrough)
+branch  3 taken 67%
+        2:   15:        largest = right;
+        -:   16:
+        -:   17:    // If largest is not root
+       15:   18:    if (largest != index) {
+branch  0 taken 47% (fallthrough)
+branch  1 taken 53%
+        -:   19:        // Swap array[index] and array[largest]
+        7:   20:        int temp = array[index];
+        7:   21:        array[index] = array[largest];
+        7:   22:        array[largest] = temp;
+        -:   23:
+        -:   24:        // Recursively heapify the affected sub-tree
+        7:   25:        heapify(array, size, largest);
+call    0 returned 100%
+        -:   26:    }
+       15:   27:}
+        -:   28:
+        -:   29:// Function to perform heap sort
+function heapSort called 1 returned 100% blocks executed 100%
+        1:   30:void heapSort(int array[], int size) {
+        -:   31:    // Build heap (rearrange array)
+        4:   32:    for (int i = size / 2 - 1; i >= 0; i--)
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+        3:   33:        heapify(array, size, i);
+call    0 returned 100%
+        -:   34:
+        -:   35:    // Extract elements from heap one by one
+        6:   36:    for (int i = size - 1; i > 0; i--) {
+branch  0 taken 83%
+branch  1 taken 17% (fallthrough)
+        -:   37:        // Move current root to end
+        5:   38:        int temp = array[0];
+        5:   39:        array[0] = array[i];
+        5:   40:        array[i] = temp;
+        -:   41:
+        -:   42:        // Call heapify on the reduced heap
+        5:   43:        heapify(array, i, 0);
+call    0 returned 100%
+        -:   44:    }
+        1:   45:}
+        -:   46:

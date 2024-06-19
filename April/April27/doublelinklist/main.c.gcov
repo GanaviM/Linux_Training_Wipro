@@ -1,0 +1,36 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include "doublylinklist.h"
+        -:    3:
+function main called 2 returned 100% blocks executed 100%
+        2:    4:int main() {
+        2:    5:    Node* head = NULL; // Initialize the head of the list to NULL
+        -:    6:
+        -:    7:    // Insert some elements into the list
+        2:    8:    head = insertNode(head, 1);
+call    0 returned 100%
+        2:    9:    head = insertNode(head, 2);
+call    0 returned 100%
+        2:   10:    head = insertNode(head, 3);
+call    0 returned 100%
+        -:   11:
+        -:   12:    // Display the elements of the list forward
+        2:   13:    displayListForward(head);
+call    0 returned 100%
+        -:   14:
+        -:   15:    // Display the elements of the list backward
+        2:   16:    Node* tail = head;
+        6:   17:    while (tail->next != NULL) { // Traverse to the end of the list
+branch  0 taken 67%
+branch  1 taken 33% (fallthrough)
+        4:   18:        tail = tail->next;
+        -:   19:    }
+        2:   20:    displayListBackward(tail);
+call    0 returned 100%
+        -:   21:
+        -:   22:    // Free the memory allocated for the list
+        2:   23:    freeList(head);
+call    0 returned 100%
+        -:   24:
+        2:   25:    return 0;
+        -:   26:}

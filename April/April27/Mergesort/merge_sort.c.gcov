@@ -1,0 +1,83 @@
+        -:    0:Source:merge_sort.c
+        -:    1:#include "merge_sort.h"
+        -:    2:
+        -:    3:// Function to merge two subarrays of array[]
+function merge called 5 returned 100% blocks executed 100%
+        5:    4:void merge(int array[], int left, int middle, int right) {
+        -:    5:    int i, j, k;
+        5:    6:    int n1 = middle - left + 1;
+        5:    7:    int n2 = right - middle;
+        -:    8:
+        -:    9:    // Create temporary arrays
+        5:   10:    int L[n1], R[n2];
+        -:   11:
+        -:   12:    // Copy data to temporary arrays L[] and R[]
+       14:   13:    for (i = 0; i < n1; i++)
+branch  0 taken 64%
+branch  1 taken 36% (fallthrough)
+        9:   14:        L[i] = array[left + i];
+       12:   15:    for (j = 0; j < n2; j++)
+branch  0 taken 58%
+branch  1 taken 42% (fallthrough)
+        7:   16:        R[j] = array[middle + 1 + j];
+        -:   17:
+        -:   18:    // Merge the temporary arrays back into array[left..right]
+        5:   19:    i = 0; // Initial index of first subarray
+        5:   20:    j = 0; // Initial index of second subarray
+        5:   21:    k = left; // Initial index of merged subarray
+       14:   22:    while (i < n1 && j < n2) {
+branch  0 taken 79% (fallthrough)
+branch  1 taken 21%
+branch  2 taken 82%
+branch  3 taken 18% (fallthrough)
+        9:   23:        if (L[i] <= R[j]) {
+branch  0 taken 56% (fallthrough)
+branch  1 taken 44%
+        5:   24:            array[k] = L[i];
+        5:   25:            i++;
+        -:   26:        } else {
+        4:   27:            array[k] = R[j];
+        4:   28:            j++;
+        -:   29:        }
+        9:   30:        k++;
+        -:   31:    }
+        -:   32:
+        -:   33:    // Copy the remaining elements of L[], if any
+        9:   34:    while (i < n1) {
+branch  0 taken 44%
+branch  1 taken 56% (fallthrough)
+        4:   35:        array[k] = L[i];
+        4:   36:        i++;
+        4:   37:        k++;
+        -:   38:    }
+        -:   39:
+        -:   40:    // Copy the remaining elements of R[], if any
+        8:   41:    while (j < n2) {
+branch  0 taken 38%
+branch  1 taken 62% (fallthrough)
+        3:   42:        array[k] = R[j];
+        3:   43:        j++;
+        3:   44:        k++;
+        -:   45:    }
+        5:   46:}
+        -:   47:
+        -:   48:// Function to perform merge sort
+function mergeSort called 11 returned 100% blocks executed 100%
+       11:   49:void mergeSort(int array[], int left, int right) {
+       11:   50:    if (left < right) {
+branch  0 taken 45% (fallthrough)
+branch  1 taken 55%
+        -:   51:        // Same as (left+right)/2, but avoids overflow for large left and right
+        5:   52:        int middle = left + (right - left) / 2;
+        -:   53:
+        -:   54:        // Sort first and second halves
+        5:   55:        mergeSort(array, left, middle);
+call    0 returned 100%
+        5:   56:        mergeSort(array, middle + 1, right);
+call    0 returned 100%
+        -:   57:
+        -:   58:        // Merge the sorted halves
+        5:   59:        merge(array, left, middle, right);
+call    0 returned 100%
+        -:   60:    }
+       11:   61:}

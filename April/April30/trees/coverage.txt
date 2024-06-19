@@ -1,0 +1,14 @@
+File 'main.c'
+Lines executed:100.00% of 19
+No branches
+Calls executed:100.00% of 15
+Creating 'main.c.gcov'
+
+File 'binary_tree.c'
+Lines executed:92.59% of 27
+Branches executed:100.00% of 12
+Taken at least once:83.33% of 12
+Calls executed:80.00% of 10
+Creating 'binary_tree.c.gcov'
+
+Lines executed:95.65% of 46

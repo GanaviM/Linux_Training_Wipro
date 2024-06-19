@@ -1,0 +1,60 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include "circular_queue.h"
+        -:    3:
+function main called 1 returned 0% blocks executed 92%
+        1:    4:int main() {
+        1:    5:    struct CircularQueue* queue = createCircularQueue(5); // Create a circular queue with capacity 5
+call    0 returned 100%
+        -:    6:
+        -:    7:    // Enqueue elements onto the circular queue
+        1:    8:    enqueue(queue, 10);
+call    0 returned 100%
+        1:    9:    enqueue(queue, 20);
+call    0 returned 100%
+        1:   10:    enqueue(queue, 30);
+call    0 returned 100%
+        1:   11:    enqueue(queue, 40);
+call    0 returned 100%
+        1:   12:    enqueue(queue, 50);
+call    0 returned 100%
+        -:   13:
+        -:   14:    // Dequeue elements from the circular queue and print them
+        1:   15:    printf("%d dequeued from queue.\n", dequeue(queue));
+call    0 returned 100%
+call    1 returned 100%
+        1:   16:    printf("%d dequeued from queue.\n", dequeue(queue));
+call    0 returned 100%
+call    1 returned 100%
+        -:   17:
+        -:   18:    // Enqueue elements again
+        1:   19:    enqueue(queue, 60);
+call    0 returned 100%
+        1:   20:    enqueue(queue, 70);
+call    0 returned 100%
+        -:   21:
+        -:   22:    // Print front and rear elements of the circular queue
+        1:   23:    printf("Front element of the queue: %d\n", front(queue));
+call    0 returned 100%
+call    1 returned 100%
+        1:   24:    printf("Rear element of the queue: %d\n", rear(queue));
+call    0 returned 100%
+call    1 returned 100%
+        -:   25:
+        -:   26:    // Dequeue remaining elements from the circular queue and print them
+        6:   27:    while (!isEmpty(queue)) {
+call    0 returned 100%
+branch  1 taken 83%
+branch  2 taken 17% (fallthrough)
+        5:   28:        printf("%d dequeued from queue.\n", dequeue(queue));
+call    0 returned 100%
+call    1 returned 100%
+        -:   29:    }
+        -:   30:
+        -:   31:    // Attempting to dequeue from an empty circular queue
+       1*:   32:    printf("%d dequeued from queue.\n", dequeue(queue)); // Queue underflow
+call    0 returned 0%
+call    1 never executed
+        -:   33:
+    #####:   34:    return 0;
+        -:   35:}

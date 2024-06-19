@@ -1,0 +1,73 @@
+                           "Singly Linked List"
+
+-------------------------------Static Linking---------------------------------------
+1. Compile main.c into an object file:
+
+                 gcc -c main.c -o main_singly_static.o
+
+This command compiles the main.c file into an object file named main_singly_static.o.
+
+2.Compile singly_linked_list.c into an object file:
+		
+		gcc -c singly_linked_list.c -o singly_linked_list_static.o
+
+This command compiles the singly_linked_list.c file into an object file named singly_linked_list_static.o.
+
+3. Create a static library from the object file:
+
+		ar rcs libsingly_linked_list_static.a singly_linked_list_static.o
+
+This command creates a static library named libsingly_linked_list_static.a from the singly_linked_list_static.o object file.
+
+4. Link main_singly_static.o with the static library to create the executable:
+
+		gcc -o program_singly_static main_singly_static.o -L. -lsingly_linked_list_static
+
+
+This command links the main_singly_static.o object file with the static library libsingly_linked_list_static.a to create the executable program_singly_static.
+
+5. Run the statically linked program:
+
+		./program_singly_static
+
+This command executes the statically linked program program_singly_static.
+
+
+-----------------------------------Dynamic Linking------------------------------------
+1. Compile main.c into an object file:
+	
+		gcc -c main.c -o main_singly_dynamic.o
+
+This command compiles the main.c file into an object file named main_singly_dynamic.o.
+
+2. Compile singly_linked_list.c into an object file:
+
+		gcc -c -fPIC singly_linked_list.c -o singly_linked_list_dynamic.o
+
+This command compiles the singly_linked_list.c file into a position-independent object file named singly_linked_list_dynamic.o for dynamic linking.
+
+3. Create a shared library from the object file:
+
+		gcc -shared -o libsingly_linked_list.so singly_linked_list_dynamic.o
+
+This command compiles the singly_linked_list.c file into a position-independent object file named singly_linked_list_dynamic.o for dynamic linking.
+
+4. Create a shared library from the object file:
+
+		gcc -o program_singly_dynamic main_singly_dynamic.o -L. -lsingly_linked_list
+
+
+This command links the main_singly_dynamic.o object file with the shared library libsingly_linked_list.so to create the executable program_singly_dynamic.
+
+5. Run the dynamically linked program
+
+		./program_singly_dynamic
+
+This command executes the dynamically linked program program_singly_dynamic.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                
+			"Doubly Linked List"
+
+Static Linking and Dynamic Linking:
+The steps for static linking remain the same as for the singly linked list implementation, with the only difference being the filenames and library names associated with the doubly linked list implementation.

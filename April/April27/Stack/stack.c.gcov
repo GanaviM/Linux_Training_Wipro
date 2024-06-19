@@ -1,0 +1,70 @@
+        -:    0:Source:stack.c
+        -:    1:#include "stack.h"
+        -:    2:
+        -:    3:// Function to create a new node with given data
+function createNode called 3 returned 100% blocks executed 60%
+        3:    4:struct Node* createNode(int data) {
+        3:    5:    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        3:    6:    if (newNode == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:    7:        printf("Memory allocation failed.\n");
+call    0 never executed
+    #####:    8:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:    9:    }
+        3:   10:    newNode->data = data;
+        3:   11:    newNode->next = NULL;
+        3:   12:    return newNode;
+        -:   13:}
+        -:   14:
+        -:   15:// Function to check if the stack is empty
+function isEmpty called 5 returned 100% blocks executed 100%
+        5:   16:bool isEmpty(struct Node* root) {
+        5:   17:    return root == NULL;
+        -:   18:}
+        -:   19:
+        -:   20:// Function to push an element onto the stack
+function push called 3 returned 100% blocks executed 100%
+        3:   21:void push(struct Node** root, int data) {
+        3:   22:    struct Node* newNode = createNode(data);
+call    0 returned 100%
+        3:   23:    newNode->next = *root;
+        3:   24:    *root = newNode;
+        3:   25:    printf("%d pushed to stack.\n", data);
+call    0 returned 100%
+        3:   26:}
+        -:   27:
+        -:   28:// Function to pop an element from the stack
+function pop called 4 returned 75% blocks executed 100%
+        4:   29:int pop(struct Node** root) {
+        4:   30:    if (isEmpty(*root)) {
+call    0 returned 100%
+branch  1 taken 25% (fallthrough)
+branch  2 taken 75%
+        1:   31:        printf("Stack underflow.\n");
+call    0 returned 100%
+        1:   32:        exit(EXIT_FAILURE);
+call    0 returned 0%
+        -:   33:    }
+        3:   34:    struct Node* temp = *root;
+        3:   35:    *root = (*root)->next;
+        3:   36:    int popped = temp->data;
+        3:   37:    free(temp);
+        3:   38:    return popped;
+        -:   39:}
+        -:   40:
+        -:   41:// Function to return the top element of the stack
+function peek called 1 returned 100% blocks executed 67%
+        1:   42:int peek(struct Node* root) {
+        1:   43:    if (isEmpty(root)) {
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+    #####:   44:        printf("Stack is empty.\n");
+call    0 never executed
+    #####:   45:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   46:    }
+        1:   47:    return root->data;
+        -:   48:}

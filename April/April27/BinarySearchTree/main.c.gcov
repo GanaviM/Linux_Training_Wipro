@@ -1,0 +1,68 @@
+        -:    0:Source:main.c
+        -:    1:#include <stdio.h>
+        -:    2:#include "binary_search.h"
+        -:    3:
+function main called 1 returned 100% blocks executed 96%
+        1:    4:int main() {
+        1:    5:    struct node* root = NULL;
+        -:    6:
+        -:    7:    // Insert some nodes into the BST
+        1:    8:    root = insert(root, 50);
+call    0 returned 100%
+        1:    9:    root = insert(root, 30);
+call    0 returned 100%
+        1:   10:    root = insert(root, 20);
+call    0 returned 100%
+        1:   11:    root = insert(root, 40);
+call    0 returned 100%
+        1:   12:    root = insert(root, 70);
+call    0 returned 100%
+        1:   13:    root = insert(root, 60);
+call    0 returned 100%
+        1:   14:    root = insert(root, 80);
+call    0 returned 100%
+        -:   15:
+        1:   16:    printf("Inorder traversal of the BST: ");
+call    0 returned 100%
+        1:   17:    inorderTraversal(root);
+call    0 returned 100%
+        1:   18:    printf("\n");
+call    0 returned 100%
+        -:   19:
+        -:   20:    // Find and print the minimum and maximum values in the BST
+        1:   21:    struct node* minNode = findMin(root);
+call    0 returned 100%
+        1:   22:    printf("Minimum value in the BST: %d\n", minNode->data);
+call    0 returned 100%
+        -:   23:
+        1:   24:    struct node* maxNode = findMax(root);
+call    0 returned 100%
+        1:   25:    printf("Maximum value in the BST: %d\n", maxNode->data);
+call    0 returned 100%
+        -:   26:
+        -:   27:    // Search for a key value in the BST
+        1:   28:    int key = 70;
+        1:   29:    if (search(root, key)) {
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+        1:   30:        printf("%d is found in the BST\n", key);
+call    0 returned 100%
+        -:   31:    } else {
+    #####:   32:        printf("%d is not found in the BST\n", key);
+call    0 never executed
+        -:   33:    }
+        -:   34:
+        1:   35:    root = deleteNode(root, 70);
+call    0 returned 100%
+        1:   36:    printf("Inorder traversal after deleting node 70: ");
+call    0 returned 100%
+        1:   37:    inorderTraversal(root);
+call    0 returned 100%
+        1:   38:    printf("\n");
+call    0 returned 100%
+        -:   39:
+        1:   40:    deleteTree(root); // Free memory allocated for the BST nodes
+call    0 returned 100%
+        1:   41:    return 0;
+        -:   42:}

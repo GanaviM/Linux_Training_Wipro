@@ -1,0 +1,63 @@
+        -:    0:Source:main.c
+        -:    1:// main_calculator.c
+        -:    2:
+        -:    3:#include <stdio.h>
+        -:    4:#include <dlfcn.h>
+        -:    5:
+function main called 2 returned 100% blocks executed 85%
+        2:    6:int main() {
+        -:    7:    // Load the shared library
+        2:    8:    void *lib_handle = dlopen("./libcalculator.so", RTLD_LAZY);
+call    0 returned 100%
+        2:    9:    if (!lib_handle) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:   10:        // Error handling for library loading failure
+    #####:   11:        fprintf(stderr, "Error: %s\n", dlerror());
+call    0 never executed
+call    1 never executed
+    #####:   12:        return 1;
+        -:   13:    }
+        -:   14:
+        -:   15:    // Function pointer declarations
+        -:   16:    int (*add_func)(int, int);
+        -:   17:    int (*subtract_func)(int, int);
+        -:   18:    int (*multiply_func)(int, int);
+        -:   19:    float (*divide_func)(int, int);
+        -:   20:
+        -:   21:    // Get pointers to the calculator functions
+        2:   22:    add_func = dlsym(lib_handle, "add");
+call    0 returned 100%
+        2:   23:    subtract_func = dlsym(lib_handle, "subtract");
+call    0 returned 100%
+        2:   24:    multiply_func = dlsym(lib_handle, "multiply");
+call    0 returned 100%
+        2:   25:    divide_func = dlsym(lib_handle, "divide");
+call    0 returned 100%
+        -:   26:
+        -:   27:    // Perform calculations
+        2:   28:    int result_add = add_func(10, 5);
+call    0 returned 100%
+        2:   29:    int result_subtract = subtract_func(10, 5);
+call    0 returned 100%
+        2:   30:    int result_multiply = multiply_func(10, 5);
+call    0 returned 100%
+        2:   31:    float result_divide = divide_func(10, 5);
+call    0 returned 100%
+        -:   32:
+        -:   33:    // Print the results
+        2:   34:    printf("Addition: %d\n", result_add);
+call    0 returned 100%
+        2:   35:    printf("Subtraction: %d\n", result_subtract);
+call    0 returned 100%
+        2:   36:    printf("Multiplication: %d\n", result_multiply);
+call    0 returned 100%
+        2:   37:    printf("Division: %.2f\n", result_divide);
+call    0 returned 100%
+        -:   38:
+        -:   39:    // Close the library
+        2:   40:    dlclose(lib_handle);
+call    0 returned 100%
+        -:   41:
+        2:   42:    return 0;
+        -:   43:}

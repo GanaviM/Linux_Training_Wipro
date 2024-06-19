@@ -1,0 +1,4 @@
+CC = gcc
+CFLAGS = -I.
+calculate: main.o add.o sub.o
+	$(CC) -o calculate main.o add.o sub.o $(CFLAGS)

@@ -1,0 +1,23 @@
+        -:    0:Source:div.c
+        -:    1://header files
+        -:    2:#include "div.h"
+        -:    3:#include<stdio.h>
+        -:    4:
+        -:    5://declares function prototype
+function division called 1 returned 100% blocks executed 60%
+        1:    6:float division(float x, float y)
+        -:    7:{
+        -:    8:	//using if condition
+        1:    9:	if(y != 0.0)  //if value of y is not zero condition becomes true
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:   10:	{
+        1:   11:		return x / y; // return division of two integer
+        -:   12:	}
+        -:   13:	else
+        -:   14:	{
+    #####:   15:		printf("Error: Division by zero\n"); // condition is false returns error and zero value
+call    0 never executed
+    #####:   16:		return 0.0;
+        -:   17:	}
+        -:   18:}

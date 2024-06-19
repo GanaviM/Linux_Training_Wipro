@@ -1,0 +1,119 @@
+        -:    0:Source:circular_queue.c
+        -:    1:#include "circular_queue.h"
+        -:    2:
+        -:    3:// Function to create a new circular queue with given capacity
+function createCircularQueue called 1 returned 100% blocks executed 50%
+        1:    4:struct CircularQueue* createCircularQueue(int capacity) {
+        1:    5:    struct CircularQueue* queue = (struct CircularQueue*)malloc(sizeof(struct CircularQueue));
+        1:    6:    if (queue == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:    7:        printf("Memory allocation failed.\n");
+call    0 never executed
+    #####:    8:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:    9:    }
+        1:   10:    queue->capacity = capacity;
+        1:   11:    queue->array = (int*)malloc(queue->capacity * sizeof(int));
+        1:   12:    if (queue->array == NULL) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   13:        printf("Memory allocation failed.\n");
+call    0 never executed
+    #####:   14:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   15:    }
+        1:   16:    queue->front = queue->rear = -1; // Initialize front and rear
+        1:   17:    queue->size = 0; // Initialize size
+        1:   18:    return queue;
+        -:   19:}
+        -:   20:
+        -:   21:// Function to check if the circular queue is full
+function isFull called 7 returned 100% blocks executed 100%
+        7:   22:bool isFull(struct CircularQueue* queue) {
+        7:   23:    return (queue->size == queue->capacity);
+        -:   24:}
+        -:   25:
+        -:   26:// Function to check if the circular queue is empty
+function isEmpty called 16 returned 100% blocks executed 100%
+       16:   27:bool isEmpty(struct CircularQueue* queue) {
+       16:   28:    return (queue->size == 0);
+        -:   29:}
+        -:   30:
+        -:   31:// Function to add an element to the rear of the circular queue (enqueue)
+function enqueue called 7 returned 100% blocks executed 75%
+        7:   32:void enqueue(struct CircularQueue* queue, int data) {
+        7:   33:    if (isFull(queue)) {
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+    #####:   34:        printf("Queue overflow.\n");
+call    0 never executed
+    #####:   35:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   36:    }
+        7:   37:    queue->rear = (queue->rear + 1) % queue->capacity; // Move rear pointer circularly
+        7:   38:    queue->array[queue->rear] = data; // Assign data to rear
+        7:   39:    if (queue->front == -1) {
+branch  0 taken 14% (fallthrough)
+branch  1 taken 86%
+        1:   40:        queue->front = queue->rear; // If it's the first element, update front
+        -:   41:    }
+        7:   42:    queue->size++; // Increment size
+        7:   43:    printf("%d enqueued to queue.\n", data);
+call    0 returned 100%
+        7:   44:}
+        -:   45:
+        -:   46:// Function to remove an element from the front of the circular queue (dequeue)
+function dequeue called 8 returned 88% blocks executed 100%
+        8:   47:int dequeue(struct CircularQueue* queue) {
+        8:   48:    if (isEmpty(queue)) {
+call    0 returned 100%
+branch  1 taken 12% (fallthrough)
+branch  2 taken 88%
+        1:   49:        printf("Queue underflow.\n");
+call    0 returned 100%
+        1:   50:        exit(EXIT_FAILURE);
+call    0 returned 0%
+        -:   51:    }
+        7:   52:    int data = queue->array[queue->front]; // Get data from front
+        7:   53:    if (queue->front == queue->rear) {
+branch  0 taken 14% (fallthrough)
+branch  1 taken 86%
+        1:   54:        queue->front = queue->rear = -1; // If it's the last element, reset front and rear
+        -:   55:    } else {
+        6:   56:        queue->front = (queue->front + 1) % queue->capacity; // Move front pointer circularly
+        -:   57:    }
+        7:   58:    queue->size--; // Decrement size
+        7:   59:    return data;
+        -:   60:}
+        -:   61:
+        -:   62:// Function to return the front element of the circular queue
+function front called 1 returned 100% blocks executed 67%
+        1:   63:int front(struct CircularQueue* queue) {
+        1:   64:    if (isEmpty(queue)) {
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+    #####:   65:        printf("Queue is empty.\n");
+call    0 never executed
+    #####:   66:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   67:    }
+        1:   68:    return queue->array[queue->front];
+        -:   69:}
+        -:   70:
+        -:   71:// Function to return the rear element of the circular queue
+function rear called 1 returned 100% blocks executed 67%
+        1:   72:int rear(struct CircularQueue* queue) {
+        1:   73:    if (isEmpty(queue)) {
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+    #####:   74:        printf("Queue is empty.\n");
+call    0 never executed
+    #####:   75:        exit(EXIT_FAILURE);
+call    0 never executed
+        -:   76:    }
+        1:   77:    return queue->array[queue->rear];
+        -:   78:}

@@ -1,0 +1,24 @@
+        -:    0:Source:insertion_sort.c
+        -:    1:#include "insertion_sort.h"
+        -:    2:
+        -:    3:// Function to perform insertion sort
+function insertionSort called 1 returned 100% blocks executed 100%
+        1:    4:void insertionSort(int array[], int size) {
+        5:    5:    for (int i = 1; i < size; i++) {
+branch  0 taken 80%
+branch  1 taken 20% (fallthrough)
+        4:    6:        int key = array[i]; // Store the current element to be inserted
+        4:    7:        int j = i - 1; // Index of the previous element
+        -:    8:
+        -:    9:        // Move elements of array[0..i-1], that are greater than key, to one position ahead of their current position
+       11:   10:        while (j >= 0 && array[j] > key) {
+branch  0 taken 82% (fallthrough)
+branch  1 taken 18%
+branch  2 taken 78%
+branch  3 taken 22% (fallthrough)
+        7:   11:            array[j + 1] = array[j]; // Move the element to the right
+        7:   12:            j = j - 1; // Move to the previous element
+        -:   13:        }
+        4:   14:        array[j + 1] = key; // Insert the stored element at correct position
+        -:   15:    }
+        1:   16:}

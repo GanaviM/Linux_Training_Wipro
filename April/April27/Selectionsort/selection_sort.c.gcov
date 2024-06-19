@@ -1,0 +1,28 @@
+        -:    0:Source:selection_sort.c
+        -:    1:#include "selection_sort.h"
+        -:    2:
+        -:    3:// Function to perform selection sort
+function selectionSort called 1 returned 100% blocks executed 100%
+        1:    4:void selectionSort(int array[], int size) {
+        5:    5:    for (int i = 0; i < size - 1; i++) {
+branch  0 taken 80%
+branch  1 taken 20% (fallthrough)
+        4:    6:        int min_index = i; // Assume the current element is the minimum
+        -:    7:
+        -:    8:        // Find the index of the minimum element in the unsorted part of the array
+       14:    9:        for (int j = i + 1; j < size; j++) {
+branch  0 taken 71%
+branch  1 taken 29% (fallthrough)
+       10:   10:            if (array[j] < array[min_index]) {
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        5:   11:                min_index = j;
+        -:   12:            }
+        -:   13:        }
+        -:   14:
+        -:   15:        // Swap the minimum element with the first element of the unsorted part
+        4:   16:        int temp = array[min_index];
+        4:   17:        array[min_index] = array[i];
+        4:   18:        array[i] = temp;
+        -:   19:    }
+        1:   20:}

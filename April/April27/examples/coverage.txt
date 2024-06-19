@@ -1,0 +1,14 @@
+File 'main.c'
+Lines executed:66.67% of 15
+Branches executed:100.00% of 4
+Taken at least once:50.00% of 4
+Calls executed:50.00% of 10
+Creating 'main.c.gcov'
+
+File 'hello_dynamic.c'
+Lines executed:0.00% of 3
+No branches
+Calls executed:0.00% of 1
+Creating 'hello_dynamic.c.gcov'
+
+Lines executed:55.56% of 18
