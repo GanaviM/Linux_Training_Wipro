@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/kernel_char.mod := printf '%s\n'   kernel_char.o | awk '!x[$$0]++ { print("/home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/"$$0) }' > /home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/kernel_char.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/temp_sensor.mod := printf '%s\n'   temp_sensor.o | awk '!x[$$0]++ { print("/home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/"$$0) }' > /home/rps/Desktop/LDD_Batch/Ganavi_M/June/June10/Character_device_driver/temp_sensor.mod

@@ -1,0 +1,6 @@
+CC = gcc
+CFLAGS =-I.
+
+
+char_dev: user.o
+	$(CC) -o char_dev user.o $(CFLAGS)
