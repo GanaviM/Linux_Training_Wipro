@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/BHAVANA_CODES/PROJECTS/ASSIGNMENT_2/syscall.mod := printf '%s\n'   syscall.o | awk '!x[$$0]++ { print("/home/rps/Documents/BHAVANA_CODES/PROJECTS/ASSIGNMENT_2/"$$0) }' > /home/rps/Documents/BHAVANA_CODES/PROJECTS/ASSIGNMENT_2/syscall.mod
